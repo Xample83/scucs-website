@@ -1,0 +1,179 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FramedImage from "../components/FramedImage.astro";
+import heroPhoto from "../assets/hero-care-photo.jpg";
+
+const milestones = [
+  {
+    year: "1979",
+    text: "SCUCS was established with grants from Title III to provide short-term homemaker care, paratransit, the Golden Voice Newspaper, and emergency repairs and fuel assistance \u2014 starting with a staff of 15.",
+  },
+  {
+    year: "1980s\u201390s",
+    text: "SCUCS researched and secured foundation and government funding to pilot several programs that still operate today, including some of the state's first Senior Shared Housing, Respite Care, Sound Advice, and Adult Family Care programs.",
+  },
+  {
+    year: "35+ Years",
+    text: "SCUCS built decades of experience operating home health aide and emergency services, becoming a trusted resource other counties turn to when implementing similar programs.",
+  },
+  {
+    year: "2014",
+    text: "DDD Support Coordination was added to the In-Home Services Unit, developing and implementing strategies to enhance the lives of adults with developmental disabilities living in the community.",
+  },
+  {
+    year: "Today",
+    text: "SCUCS serves older adults, adults with disabilities, and individuals facing homelessness across Camden, Burlington, and Gloucester counties \u2014 and provides Support Coordination statewide.",
+  },
+];
+
+const serviceAreas = ["Camden County", "Burlington County", "Gloucester County"];
+
+const partners = [
+  "Camden County Board of Commissioners",
+  "Camden County Division of Senior and Disabled Services",
+  "Burlington County Board of Commissioners",
+  "Burlington County Office on Aging",
+  "Gloucester County Division of Senior Services",
+  "NJ Department of Human Services",
+  "NJ Department of Health and Senior Services",
+  "NJ Department of Veterans and Military Affairs",
+  "NJ Transit",
+  "US Department of Housing and Urban Development (HUD)",
+  "US Department of Agriculture (USDA)",
+];
+---
+
+<Layout
+  title="About Us"
+  description="Since 1979, Senior Citizens United Community Services (SCUCS) has enhanced the quality of life and independence of older adults, adults with disabilities, and individuals facing homelessness in South Jersey."
+>
+  <section class="bg-brand-sky/10">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
+      <div class="text-center lg:text-left">
+        <p class="text-lg font-bold uppercase tracking-wide text-brand-accent">Since 1979</p>
+        <h1 class="mt-2 text-4xl font-extrabold tracking-tight text-brand-primary sm:text-5xl">
+          40+ Years Improving the Health and Welfare of Older Adults and People With Disabilities
+        </h1>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--color-ink)]">
+          Senior Citizens United Community Services is a not-for-profit social service agency dedicated to
+          enhancing the quality of life, encouraging independence, and providing a safe and supportive living
+          environment for older adults, adults with disabilities, and individuals facing homelessness &mdash;
+          especially those with the greatest socio-economic need.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+          <a
+            href="/services"
+            class="w-full rounded-md bg-brand-primary px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
+          >
+            Explore Our Services
+          </a>
+          <a
+            href="/donate"
+            class="w-full rounded-md bg-brand-accent px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
+          >
+            Support Our Mission
+          </a>
+        </div>
+      </div>
+
+      <FramedImage
+        class="order-first lg:order-last"
+        src={heroPhoto}
+        alt="A home health aide sharing a warm conversation with an older adult client at her kitchen table"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="history-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 id="history-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">Our History</h2>
+      <p class="mt-4 text-lg text-[var(--color-ink)]">
+        From a small Title III-funded program to a multi-county agency, SCUCS has grown alongside the communities
+        we serve.
+      </p>
+    </div>
+
+    <ol class="mx-auto mt-12 max-w-3xl space-y-8 border-l-4 border-brand-sky/40 pl-8">
+      {milestones.map((milestone) => (
+        <li class="relative">
+          <span class="absolute -left-[calc(2rem+7px)] top-1 h-4 w-4 rounded-full bg-brand-primary" aria-hidden="true"></span>
+          <p class="text-lg font-extrabold text-brand-primary">{milestone.year}</p>
+          <p class="mt-1 text-base leading-relaxed text-[var(--color-ink)]">{milestone.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section aria-labelledby="service-area-heading" class="bg-brand-primary text-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 id="service-area-heading" class="text-3xl font-extrabold sm:text-4xl">Where We Serve</h2>
+        <p class="mt-4 text-lg leading-relaxed text-slate-100">
+          Most SCUCS programs serve residents of Camden, Burlington, and Gloucester counties. Support Coordination
+          and the Housing Supports Program are available statewide to eligible New Jersey residents.
+        </p>
+      </div>
+
+      <ul class="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-3">
+        {serviceAreas.map((area) => (
+          <li class="rounded-lg border border-white/30 bg-white/10 p-6 text-center text-lg font-bold">
+            {area}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="partners-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 id="partners-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        Our Partners &amp; Funders
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-ink)]">
+        SCUCS programs are made possible in part through the generous support of these partners.
+      </p>
+    </div>
+
+    <ul class="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-2">
+      {partners.map((partner) => (
+        <li class="flex items-center gap-3 rounded-lg border border-slate-200 p-4 text-base text-[var(--color-ink)]">
+          <svg class="h-5 w-5 flex-none text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>{partner}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="cta-heading" class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+    <div class="rounded-2xl bg-brand-sky/10 px-6 py-12 text-center sm:px-12">
+      <h2 id="cta-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        Want to Learn More or Get Involved?
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-ink)]">
+        Whether you have questions about our programs or want to support our work, we'd love to hear from you.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/contact-us"
+          class="w-full rounded-md bg-brand-primary px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
+        >
+          Contact Us
+        </a>
+        <a
+          href="/volunteer"
+          class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
+        >
+          Volunteer
+        </a>
+        <a
+          href="/donate"
+          class="w-full rounded-md bg-brand-accent px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
+        >
+          Donate
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

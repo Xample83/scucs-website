@@ -1,0 +1,716 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Resource {
+  category: string;
+  name: string;
+  address?: string;
+  phone?: string;
+  phone2?: string;
+  email?: string;
+  website?: string;
+  notes?: string;
+}
+
+const categories = [
+  {
+    id: "emergency-housing",
+    label: "Emergency Housing & Shelter",
+    pdf: "https://scucs.org/wp-content/uploads/2026/07/EmergencyResources_EmergencyHousing.pdf",
+  },
+  {
+    id: "affordable-housing",
+    label: "Affordable Housing",
+    pdf: "https://scucs.org/wp-content/uploads/2026/07/EmergencyResources_AffordableHousing.pdf",
+  },
+  {
+    id: "housing-numbers",
+    label: "Housing Resources & Important Numbers",
+    pdf: "https://scucs.org/wp-content/uploads/2026/07/EmergencyResources_HousingResources.pdf",
+  },
+  {
+    id: "assisted-living",
+    label: "Assisted Living",
+    pdf: "https://scucs.org/wp-content/uploads/2026/07/EmergencyResources_AssistedLiving.pdf",
+  },
+];
+
+const resources: Resource[] = [
+  // Emergency Housing & Shelter
+  {
+    category: "emergency-housing",
+    name: "Camden County Navigational Resource Center",
+    address: "1812 Federal St, Camden, NJ 08105",
+    phone: "856-671-6101",
+    notes: "24-hour contact",
+  },
+  {
+    category: "emergency-housing",
+    name: "Joseph's House",
+    address: "555 Atlantic Ave, Camden, NJ 08104",
+    phone: "856-246-1087",
+    email: "info@jhoc.org",
+    website: "https://www.jhoc.org",
+  },
+  {
+    category: "emergency-housing",
+    name: "Family Promise of Burlington County",
+    address: "16 E Main St, Moorestown, NJ 08057",
+    phone: "856-638-0110",
+    email: "info@fpburlco.org",
+    website: "https://www.fpburlco.org",
+  },
+  {
+    category: "emergency-housing",
+    name: "Family Promise of Southwest New Jersey",
+    address: "302 Kings Highway, Clarksboro, NJ 08020",
+    phone: "856-243-5971",
+    email: "info@familypromiseswnj.org",
+    website: "https://www.familypromiseswnj.org",
+  },
+  {
+    category: "emergency-housing",
+    name: "Anna Sample House (VOADV)",
+    address: "408-416 Line St, Camden, NJ",
+    phone: "856-966-0909",
+    notes: "Serves single women and families",
+  },
+  {
+    category: "emergency-housing",
+    name: "Aletha R. Wright Vision of Hope Center",
+    address: "271 Atlantic Ave, Camden, NJ",
+    phone: "856-966-0909",
+    notes: "Serves single men",
+  },
+  {
+    category: "emergency-housing",
+    name: "Camden County Domestic Violence Center",
+    phone: "856-227-1234",
+    notes: "Women and children fleeing abuse. Emergency safe housing (45-60 days).",
+  },
+  {
+    category: "emergency-housing",
+    name: "SERV - Center for Family Services",
+    phone: "866-295-7378",
+    notes: "Serves adults, children, and families",
+  },
+  {
+    category: "emergency-housing",
+    name: "Harambe Social Services Inc.",
+    phone: "609-225-6936",
+    notes: "Serves survivors of domestic violence",
+  },
+  {
+    category: "emergency-housing",
+    name: "United Advocacy Group",
+    phone: "856-243-5810",
+    notes: "Serves survivors of domestic violence",
+  },
+  {
+    category: "emergency-housing",
+    name: "NJ Dept. of Children & Families - Domestic Violence Services",
+    website: "https://www.nj.gov/dcf/women/domestic/",
+  },
+  {
+    category: "emergency-housing",
+    name: "Camden County Women's Shelters Listings",
+    website: "https://womenshelters.org/",
+  },
+
+  // Affordable Housing
+  {
+    category: "affordable-housing",
+    name: "Piazza NJ",
+    website: "https://www.piazzanj.com",
+    notes: "Create an account to apply for affordable housing and enter property lotteries",
+  },
+  {
+    category: "affordable-housing",
+    name: "Triad Housing Programs",
+    website: "https://www.triadhousingprograms.com",
+    notes: "Create an account to apply for affordable housing options",
+  },
+  {
+    category: "affordable-housing",
+    name: "Affordable Homes New Jersey",
+    website: "https://www.affordablehomesnewjersey.com",
+    notes: "Search by county to find and apply for affordable housing opportunities",
+  },
+  {
+    category: "affordable-housing",
+    name: "Housing Search (myResourcePal)",
+    website: "https://housing.myresourcepal.org/",
+    notes: "SCUCS's comprehensive housing search database",
+  },
+  {
+    category: "affordable-housing",
+    name: "SCUCS Housing Navigator",
+    phone: "856-456-1121",
+    notes: "Contact: Christina Cronk - for one-on-one help with your housing search",
+  },
+
+  // Housing Resources & Important Numbers
+  {
+    category: "housing-numbers",
+    name: "Camden County Board of Social Services",
+    address: "101 Woodcrest Rd Suite 161, Cherry Hill, NJ 08003",
+    phone: "856-225-8800",
+  },
+  {
+    category: "housing-numbers",
+    name: "Homeless Assistance",
+    phone: "211",
+    notes: "Call 211 for assistance",
+  },
+  { category: "housing-numbers", name: "OEO", phone: "856-910-1180" },
+  {
+    category: "housing-numbers",
+    name: "Camden County Navigational Resource Center",
+    address: "1812 Federal Street, Camden, NJ 08105",
+    phone: "856-671-6101",
+    website: "https://www.voa.org",
+  },
+  {
+    category: "housing-numbers",
+    name: "Homeless Prevention Program (HPP) - Camden County",
+    phone: "856-968-0210",
+  },
+  {
+    category: "housing-numbers",
+    name: "Homeless Prevention Program (HPP) - Burlington County",
+    phone: "609-518-2378",
+  },
+  {
+    category: "housing-numbers",
+    name: "Homeless Prevention Program (HPP) - Gloucester County",
+    phone: "856-845-9200",
+  },
+  {
+    category: "housing-numbers",
+    name: "Family Promise of Burlington County",
+    address: "16 East Main St, Moorestown, NJ 08057",
+    phone: "856-638-0110",
+  },
+  {
+    category: "housing-numbers",
+    name: "Camden Rescue Mission",
+    address: "1634 Broadway, Camden, NJ 08104",
+    phone: "856-966-2495",
+  },
+  {
+    category: "housing-numbers",
+    name: "Interfaith Homeless Outreach Council",
+    address: "1989 Route 70 East, Cherry Hill, NJ 08003",
+    phone: "856-952-2367",
+    phone2: "609-238-8885",
+  },
+  {
+    category: "housing-numbers",
+    name: "Burlington County Action Program",
+    address: "455 Larchmont Blvd Suite 2, Mt. Laurel, NJ 08054",
+    phone: "609-386-5800",
+  },
+  {
+    category: "housing-numbers",
+    name: "Gloucester County First Call for Help Hotline",
+    phone: "1-800-648-0132",
+  },
+  {
+    category: "housing-numbers",
+    name: "Catholic Charities",
+    address: "1845 Haddon Ave, Camden, NJ 08103",
+    phone: "856-342-4100",
+  },
+  {
+    category: "housing-numbers",
+    name: "St. Vincent DePaul",
+    phone: "856-767-7391",
+    phone2: "602-266-4673",
+  },
+  { category: "housing-numbers", name: "Center for Family Services", phone: "877-922-2377" },
+  { category: "housing-numbers", name: "SJ Legal Services", phone: "856-964-2010" },
+  {
+    category: "housing-numbers",
+    name: "Hispanic Family Center",
+    phone: "856-963-2663",
+    phone2: "856-541-6985",
+  },
+  {
+    category: "housing-numbers",
+    name: "Domestic Violence Hotline",
+    phone: "1-800-572-7233",
+  },
+  { category: "housing-numbers", name: "Office on Aging", phone: "856-858-3220" },
+  { category: "housing-numbers", name: "Social Security Administration", phone: "1-800-772-1213" },
+  { category: "housing-numbers", name: "Veterans Multi-Service Center", phone: "856-293-7321" },
+  {
+    category: "housing-numbers",
+    name: "NJ Dept. of Military and Veteran Affairs",
+    phone: "1-888-865-8387",
+  },
+  {
+    category: "housing-numbers",
+    name: "Commission for the Blind / CBVI",
+    phone: "1-877-685-8878",
+    phone2: "973-648-3333",
+  },
+  {
+    category: "housing-numbers",
+    name: "Division of Deaf and Hard of Hearing",
+    phone: "1-800-792-8339",
+    phone2: "609-588-2648",
+  },
+  {
+    category: "housing-numbers",
+    name: "Home Energy Assistance Hotline",
+    phone: "1-800-510-3102",
+  },
+  { category: "housing-numbers", name: "PAAD / LIFELINE", phone: "1-800-792-9745" },
+  { category: "housing-numbers", name: "PSE&G Credit & Collection", phone: "1-800-357-2262" },
+  {
+    category: "housing-numbers",
+    name: "Food Bank of South Jersey",
+    phone: "856-662-4884",
+    website: "https://www.foodbanksj.org",
+  },
+
+  // Assisted Living
+  {
+    category: "assisted-living",
+    name: "Woodbury Mews Senior Living (62+)",
+    address: "12124 Green Avenue, Woodbury, NJ 08096",
+    phone: "856-384-6600",
+    website: "https://woodburymews.com/",
+    notes: "Watermark Retirement Communities",
+  },
+  {
+    category: "assisted-living",
+    name: "Voorhees Senior Living (New Seasons of Voorhees)",
+    address: "501 Laurel Oak Road, Voorhees, NJ 08043",
+    phone: "856-566-2340",
+    website: "https://www.fivestarseniorliving.com/communities/nj/voorhees/voorhees-senior-living",
+    notes: "Contact: Stephanie Slimm",
+  },
+  {
+    category: "assisted-living",
+    name: "United Methodist Community",
+    address: "460 Haddon Avenue, Collingswood, NJ 08108",
+    phone: "856-854-4331",
+    website: "https://umcommunities.org/collingswood/",
+    notes: "Contact: Jim Clancy",
+  },
+  {
+    category: "assisted-living",
+    name: "Traditions of Cross Keys",
+    address: "3152 Glassboro-Cross Keys Road, Glassboro, NJ 08028",
+    phone: "856-307-2100",
+    website: "https://www.traditionsofcrosskeys.com",
+    notes: "Contact: Josh",
+  },
+  {
+    category: "assisted-living",
+    name: "Summit Place",
+    address: "540 Mullica Hill Road, Glassboro, NJ 08028",
+    phone: "856-307-0617",
+    website: "https://summitplace.seniorlivingnearme.com/",
+    notes: "Contact: Betty",
+  },
+  {
+    category: "assisted-living",
+    name: "Spring Oak at Berlin",
+    address: "396 S. White Horse Pike, Berlin, NJ 08009",
+    phone: "856-719-9599",
+    website: "https://www.springoakliving.com/berlin",
+    notes: "Contact: Sherry Kohl",
+  },
+  {
+    category: "assisted-living",
+    name: "Residence At Cherry Hill",
+    address: "1979 E. Route 70, Cherry Hill, NJ 08003",
+    phone: "856-517-8321",
+    website: "https://www.lcbseniorliving.com/communities/residence-at-cherry-hill/",
+    notes: "Contact: Mikkia Sharpe",
+  },
+  {
+    category: "assisted-living",
+    name: "Premier Cadbury",
+    address: "2150 Route 38, Cherry Hill, NJ 08002",
+    phone: "856-667-4550",
+    website: "https://www.cadburych.com/",
+    notes: "Contact: Sue Duban",
+  },
+  {
+    category: "assisted-living",
+    name: "New Beginnings 2",
+    address: "341 Kaighns Ave, Camden, NJ 08103",
+    phone: "443-345-7742",
+    notes: "Contact: La'Toya Wilkinson",
+  },
+  {
+    category: "assisted-living",
+    name: "Lutheran Social Ministries of New Jersey",
+    address: "3 Manhattan Drive, Burlington, NJ 08016",
+    phone: "609-386-7171",
+    website: "https://www.lsmnj.org/",
+    notes: "Contact: Heather Kato",
+  },
+  {
+    category: "assisted-living",
+    name: "Lions Gate",
+    address: "1100 Laurel Oak Road, Voorhees, NJ 08043",
+    phone: "856-679-2200",
+    website: "https://lionsgateccrc.org/",
+    notes: "Contact: David Ross",
+  },
+  {
+    category: "assisted-living",
+    name: "LCB - Residence at Voorhees",
+    address: "1301 Laurel Oak Road, Voorhees, NJ 08043",
+    phone: "856-783-8383",
+    website: "https://www.lcbseniorliving.com/communities/residence-at-voorhees/",
+    notes: "Contact: Lee Gillas",
+  },
+  {
+    category: "assisted-living",
+    name: "Friends Village at Woodstown",
+    address: "One Friends Drive, Woodstown, NJ 08098",
+    phone: "856-769-1500",
+    website: "https://fellowshiplifeinc.org/friends-village/",
+    notes: "Contact: Megan Wood",
+  },
+  {
+    category: "assisted-living",
+    name: "Creekside at Stratford",
+    address: "710 W Laurel Road, Stratford, NJ 08084",
+  },
+  {
+    category: "assisted-living",
+    name: "The Fountains at Atco",
+    address: "114 Hayes Mill Road, Atco, NJ 08004",
+    phone: "856-753-2000",
+    website: "https://fountainsatatco.com/",
+  },
+  {
+    category: "assisted-living",
+    name: "Azalea of Cinnaminson",
+    address: "605 US-130, Cinnaminson, NJ 08077",
+    phone: "855-866-7661",
+  },
+  {
+    category: "assisted-living",
+    name: "Arbor Terrace Mount Laurel",
+    address: "785 Centerton Road, Mount Laurel Township, NJ 08054",
+    phone: "856-502-1235",
+  },
+  {
+    category: "assisted-living",
+    name: "Brightview Greentree",
+    address: "170 Greentree Road, Marlton, NJ 08053",
+    phone: "856-452-7264",
+  },
+  {
+    category: "assisted-living",
+    name: "Brookdale Florence",
+    address: "901 Broad Street, Florence, NJ 08518",
+    phone: "609-499-6662",
+  },
+  {
+    category: "assisted-living",
+    name: "CareOne at Moorestown",
+    address: "895 Westfield Avenue, Moorestown, NJ 08057",
+    phone: "856-914-0444",
+  },
+  {
+    category: "assisted-living",
+    name: "Cambridge Rehabilitation & Healthcare Center",
+    address: "255 East Main Street, Moorestown, NJ 08057",
+    phone: "856-235-1214",
+  },
+  {
+    category: "assisted-living",
+    name: "Artis Senior Living of Evesham",
+    address: "302 Lippincott Drive, Marlton, NJ 08053",
+    phone: "856-810-0007",
+    notes: "Memory care",
+  },
+  {
+    category: "assisted-living",
+    name: "Terraces at Parke Place",
+    address: "661 Delsea Dr, Sewell, NJ 08080",
+    phone: "856-256-1776",
+  },
+  {
+    category: "assisted-living",
+    name: "Wesley Square RHCF",
+    address: "1005 Wesley Ave, National Park, NJ 08063",
+    phone: "856-832-3200",
+  },
+];
+
+const pdfOnlyResources = [
+  {
+    name: "Sober Living Resources",
+    description: "Oxford House sober-living homes across Camden, Gloucester, and Burlington counties.",
+    pdf: "https://scucs.org/wp-content/uploads/2026/07/EmergencyResources_SoberLiving.pdf",
+  },
+  {
+    name: "Food Pantry List",
+    description: "Food pantries and soup kitchens throughout the region, organized by town.",
+    pdf: "https://scucs.org/wp-content/uploads/2026/07/EmergencyResources_FoodPantries.pdf",
+  },
+  {
+    name: "Rooming Houses",
+    description: "A list of rooming house options in the area.",
+    pdf: "https://scucs.org/wp-content/uploads/2026/07/EmergencyResources_RoomingHouses.pdf",
+  },
+];
+
+function telHref(phone: string) {
+  const digits = phone.replace(/[^0-9]/g, "");
+  return `tel:+${digits.length === 10 ? "1" : ""}${digits}`;
+}
+
+function mapsHref(address: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+}
+---
+
+<Layout
+  title="Find Help"
+  description="Emergency and community resources from SCUCS: housing assistance, food pantries, sober living, assisted living, and important phone numbers for South Jersey residents in need."
+>
+  <section class="bg-brand-danger">
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+      <p class="text-center text-lg font-bold text-white">
+        In a life-threatening emergency, call 911 immediately.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-brand-sky/10">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight text-brand-primary sm:text-5xl">Find Help</h1>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--color-ink)]">
+          Whether you need shelter tonight, help finding affordable housing, or a listing of local food pantries,
+          this page brings together the community resources SCUCS relies on every day &mdash; all in one searchable
+          place.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
+        <div class="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm">
+          <p class="text-2xl font-extrabold text-brand-primary">211</p>
+          <p class="mt-1 text-base text-[var(--color-ink)]">Homeless or in crisis? Call 211 for immediate assistance.</p>
+        </div>
+        <div class="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm">
+          <a href="tel:+18005727233" class="text-2xl font-extrabold text-brand-primary hover:underline">
+            1-800-572-7233
+          </a>
+          <p class="mt-1 text-base text-[var(--color-ink)]">NJ Domestic Violence Hotline</p>
+        </div>
+        <div class="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm">
+          <a href="tel:+18564561121" class="text-2xl font-extrabold text-brand-primary hover:underline">
+            (856) 456-1121
+          </a>
+          <p class="mt-1 text-base text-[var(--color-ink)]">SCUCS Office &mdash; Mon&ndash;Fri, 9 AM&ndash;4 PM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="directory-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <h2 id="directory-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">Resource Directory</h2>
+    <p class="mt-3 max-w-3xl text-lg text-[var(--color-ink)]">
+      Search by name, town, or keyword, or filter by category. Each listing includes a phone number and address
+      where available.
+    </p>
+
+    <div class="mt-8">
+      <label for="resource-search" class="mb-2 block text-base font-semibold text-[var(--color-ink)]">
+        Search resources
+      </label>
+      <input
+        type="search"
+        id="resource-search"
+        placeholder="Search by name, town, or keyword&hellip;"
+        class="w-full max-w-xl rounded-md border border-slate-300 px-4 py-3 text-lg text-[var(--color-ink)] focus:border-brand-primary"
+      />
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3" role="group" aria-label="Filter by category">
+      <button type="button" data-category-filter="all" aria-pressed="true" class="filter-chip">All Categories</button>
+      {categories.map((cat) => (
+        <button type="button" data-category-filter={cat.id} aria-pressed="false" class="filter-chip">
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    <p id="results-count" class="mt-6 text-base font-semibold text-[var(--color-ink)]" aria-live="polite">
+      Showing {resources.length} of {resources.length} resources
+    </p>
+
+    <ul id="resource-list" class="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {resources.map((r) => {
+        const categoryLabel = categories.find((c) => c.id === r.category)?.label ?? r.category;
+        const searchBlob = [r.name, r.address, r.notes, categoryLabel].filter(Boolean).join(" ").toLowerCase();
+        return (
+          <li
+            data-category={r.category}
+            data-search={searchBlob}
+            class="resource-card flex flex-col items-center rounded-lg border border-slate-200 p-5 text-center shadow-sm"
+          >
+            <span class="inline-block w-fit rounded-full bg-brand-sky/15 px-3 py-1 text-sm font-semibold text-brand-primary">
+              {categoryLabel}
+            </span>
+            <h3 class="mt-3 text-lg font-bold text-brand-primary">{r.name}</h3>
+            {r.address && (
+              <p class="mt-1 text-base text-[var(--color-ink)]">
+                {r.address}{" "}
+                <a href={mapsHref(r.address)} target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-primary hover:underline">
+                  (Directions)
+                </a>
+              </p>
+            )}
+            {r.phone && (
+              <p class="mt-1 text-base">
+                <a href={telHref(r.phone)} class="font-semibold text-brand-primary hover:underline">{r.phone}</a>
+                {r.phone2 && (
+                  <>
+                    {" "}or{" "}
+                    <a href={telHref(r.phone2)} class="font-semibold text-brand-primary hover:underline">{r.phone2}</a>
+                  </>
+                )}
+              </p>
+            )}
+            {r.email && (
+              <p class="mt-1 text-base">
+                <a href={`mailto:${r.email}`} class="text-brand-primary hover:underline">{r.email}</a>
+              </p>
+            )}
+            {r.website && (
+              <p class="mt-1 text-base">
+                <a href={r.website} target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:underline break-all">
+                  {r.website.replace(/^https?:\/\//, "")}
+                </a>
+              </p>
+            )}
+            {r.notes && <p class="mt-2 flex-1 text-sm text-slate-600">{r.notes}</p>}
+          </li>
+        );
+      })}
+    </ul>
+
+    <p id="no-results" class="mt-8 hidden text-center text-lg text-[var(--color-ink)]">
+      No resources match your search. Try a different keyword, or call our office at
+      <a href="tel:+18564561121" class="font-semibold text-brand-primary hover:underline">(856) 456-1121</a>
+      for help.
+    </p>
+
+    <div class="mt-12 rounded-lg border-2 border-dashed border-brand-primary/40 bg-brand-sky/10 p-6">
+      <h3 class="text-lg font-bold text-brand-primary">Prefer a printable version?</h3>
+      <p class="mt-1 text-base text-[var(--color-ink)]">
+        Download any category as a PDF to print or share.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        {categories.map((cat) => (
+          <a
+            href={cat.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-md border-2 border-brand-primary bg-white px-4 py-2 text-base font-bold text-brand-primary shadow-sm hover:bg-brand-primary hover:text-white"
+          >
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+            </svg>
+            {cat.label} (PDF)
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="more-lists-heading" class="bg-brand-sky/10">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <h2 id="more-lists-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        More Resource Lists
+      </h2>
+      <p class="mt-3 max-w-3xl text-lg text-[var(--color-ink)]">
+        These larger lists are still available as printable PDFs while we finish bringing them onto the site.
+      </p>
+
+      <ul class="mt-8 grid gap-6 sm:grid-cols-3">
+        {pdfOnlyResources.map((item) => (
+          <li class="flex flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-brand-primary">{item.name}</h3>
+            <p class="mt-2 flex-1 text-base text-[var(--color-ink)]">{item.description}</p>
+            <a
+              href={item.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex w-fit items-center rounded-md bg-brand-primary px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-brand-primary-dark"
+            >
+              Download PDF
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .filter-chip {
+    border-radius: 9999px;
+    border: 2px solid var(--color-brand-primary);
+    background-color: white;
+    color: var(--color-brand-primary);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .filter-chip[aria-pressed="true"] {
+    background-color: var(--color-brand-primary);
+    color: white;
+  }
+</style>
+
+<script>
+  const searchInput = document.getElementById("resource-search") as HTMLInputElement | null;
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-category-filter]"));
+  const cards = Array.from(document.querySelectorAll<HTMLLIElement>("#resource-list li"));
+  const resultsCount = document.getElementById("results-count");
+  const noResults = document.getElementById("no-results");
+
+  let activeCategory = "all";
+
+  function applyFilters() {
+    const query = (searchInput?.value ?? "").trim().toLowerCase();
+    let visibleCount = 0;
+
+    for (const card of cards) {
+      const matchesCategory = activeCategory === "all" || card.dataset.category === activeCategory;
+      const matchesSearch = query === "" || (card.dataset.search ?? "").includes(query);
+      const visible = matchesCategory && matchesSearch;
+      card.classList.toggle("hidden", !visible);
+      if (visible) visibleCount += 1;
+    }
+
+    if (resultsCount) {
+      resultsCount.textContent = `Showing ${visibleCount} of ${cards.length} resources`;
+    }
+    noResults?.classList.toggle("hidden", visibleCount !== 0);
+  }
+
+  searchInput?.addEventListener("input", applyFilters);
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      activeCategory = chip.dataset.categoryFilter ?? "all";
+      chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+      applyFilters();
+    });
+  });
+</script>

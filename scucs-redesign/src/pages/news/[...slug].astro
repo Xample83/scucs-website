@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("news");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" });
+---
+
+<Layout title={post.data.title} description={post.data.summary} type="article">
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <a href="/news" class="inline-flex items-center font-semibold text-brand-primary hover:underline">
+      <span aria-hidden="true" class="mr-1">&larr;</span>
+      Back to News
+    </a>
+
+    <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
+      <span class="rounded-full bg-brand-sky/15 px-3 py-1 font-semibold text-brand-primary">
+        {post.data.category}
+      </span>
+      <time datetime={post.data.publishDate.toISOString()} class="text-slate-500">
+        {dateFormatter.format(post.data.publishDate)}
+      </time>
+    </div>
+
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-brand-primary sm:text-5xl">{post.data.title}</h1>
+
+    <div class="prose-scucs mt-8 text-lg leading-relaxed text-[var(--color-ink)]">
+      <Content />
+    </div>
+
+    <div class="mt-12 rounded-2xl bg-brand-sky/10 p-8 text-center">
+      <h2 class="text-2xl font-extrabold text-brand-primary">Questions or Need Help?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-lg text-[var(--color-ink)]">
+        Reach out to our team &mdash; we're happy to help.
+      </p>
+      <div class="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/contact-us"
+          class="w-full rounded-md bg-brand-primary px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
+        >
+          Contact Us
+        </a>
+        <a
+          href="/news"
+          class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
+        >
+          More News
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .prose-scucs :global(p) {
+    margin-top: 1.25rem;
+  }
+
+  .prose-scucs :global(p:first-child) {
+    margin-top: 0;
+  }
+
+  .prose-scucs :global(h2) {
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+  }
+
+  .prose-scucs :global(h3) {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .prose-scucs :global(ul),
+  .prose-scucs :global(ol) {
+    margin-top: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose-scucs :global(ul) {
+    list-style: disc;
+  }
+
+  .prose-scucs :global(ol) {
+    list-style: decimal;
+  }
+
+  .prose-scucs :global(li) {
+    margin-top: 0.5rem;
+  }
+
+  .prose-scucs :global(a) {
+    color: var(--color-brand-primary);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .prose-scucs :global(strong) {
+    font-weight: 700;
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const helpfulLinks = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Our Services" },
+  { href: "/find-help", label: "Find Help" },
+  { href: "/contact-us", label: "Contact Us" },
+];
+---
+
+<Layout
+  title="Page Not Found"
+  description="The page you're looking for couldn't be found. Explore SCUCS services, find help, or contact our office."
+>
+  <section class="mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6 lg:px-8">
+    <p class="text-lg font-bold uppercase tracking-wide text-brand-accent">Error 404</p>
+    <h1 class="mt-2 text-4xl font-extrabold tracking-tight text-brand-primary sm:text-5xl">
+      We Couldn't Find That Page
+    </h1>
+    <p class="mt-6 text-xl leading-relaxed text-[var(--color-ink)]">
+      The page you're looking for may have been moved or no longer exists. Here are some helpful places to start
+      instead.
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      {helpfulLinks.map((link, index) => (
+        <a
+          href={link.href}
+          class:list={[
+            "rounded-md px-6 py-3 text-lg font-bold shadow-sm",
+            index === 0
+              ? "bg-brand-primary text-white hover:bg-brand-primary-dark"
+              : "border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <p class="mt-10 text-lg text-[var(--color-ink)]">
+      Still can't find what you need? Call us at
+      <a href="tel:+18564561121" class="font-semibold text-brand-primary hover:underline">(856) 456-1121</a>
+      and we'll point you in the right direction.
+    </p>
+  </section>
+</Layout>

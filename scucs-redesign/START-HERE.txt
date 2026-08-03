@@ -1,0 +1,68 @@
+SCUCS Website Redesign — Flash Drive Package
+============================================
+
+What's on this drive
+--------------------
+1. Full project source (to continue editing)
+2. A built "dist" folder (production HTML/CSS/images)
+3. This START-HERE guide
+
+NOT included (on purpose): node_modules
+  That folder is ~150 MB and can be recreated with one command.
+
+
+Quick: view the site on another computer
+----------------------------------------
+You need Node.js 22.12 or newer installed:
+  https://nodejs.org/
+
+Then open a terminal in this project folder and run:
+
+  npm install
+  npm run preview
+
+Open the URL it prints (usually http://localhost:4321).
+
+
+To keep editing / developing
+----------------------------
+  npm install
+  npm run dev
+
+Then open http://localhost:4321 in your browser.
+
+
+About the "dist" folder
+-----------------------
+This is the finished static site (ready to deploy to a host).
+Do not open the HTML files by double-clicking them — asset paths
+won't load correctly that way. Use "npm run preview" instead, or
+upload the contents of "dist" to your web host.
+
+
+Optional: Google Analytics
+--------------------------
+Copy .env.example to .env and add your GA4 Measurement ID when ready:
+
+  PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+
+Analytics only loads in production builds when that ID is set.
+
+
+Key pages in this redesign
+--------------------------
+  /                 Home
+  /services         Services overview + 6 program pages
+  /find-help        Resource directory
+  /donate           How to give
+  /volunteer        Volunteer
+  /news             News (+ RSS at /rss.xml)
+  /about-us         About
+  /contact-us       Contact
+  /transparency     Form 990 / accountability
+  /404              Custom not-found page
+
+
+Need help later?
+----------------
+Open this project in Cursor and continue from there.

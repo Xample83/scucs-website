@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="transportationTitle">
+  <title id="transportationTitle">Transportation</title>
+  <g fill="#0056b3">
+    <!-- Van body -->
+    <path d="M8 26c0-2.2 1.8-4 4-4h28l12 10v12c0 1.1-.9 2-2 2h-3.1c-.5 2.8-3 5-5.9 5s-5.4-2.2-5.9-5H24.9c-.5 2.8-3 5-5.9 5s-5.4-2.2-5.9-5H10c-1.1 0-2-.9-2-2V26z"/>
+    <!-- Wheels (darker hubs via overlapping white circles for flat look) -->
+    <circle cx="19" cy="46" r="4.5"/>
+    <circle cx="41" cy="46" r="4.5"/>
+    <!-- Window accents as recessed rectangles punched visually with white -->
+    <rect x="13" y="27" width="9" height="6" rx="1" fill="#fff"/>
+    <rect x="24" y="27" width="8" height="6" rx="1" fill="#fff"/>
+    <path d="M34 27h8.5L48 33H34V27z" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,196 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FramedImage from "../components/FramedImage.astro";
+import Testimonials from "../components/Testimonials.astro";
+import communityServicesPhoto from "../assets/community-services-photo.jpg";
+
+const impactAreas = [
+  {
+    title: "In-Home Care",
+    description: "Helping older adults and adults with disabilities stay safe and independent in their own homes.",
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+  {
+    title: "Transportation",
+    description: "Funding rides to medical appointments, grocery stores, and community programs through Sen-Han Transit.",
+    icon: "M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m6 0a2 2 0 104 0",
+  },
+  {
+    title: "Community Programs",
+    description: "Supporting social connection, recreation, and enrichment activities that fight isolation.",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
+  },
+  {
+    title: "Emergency Assistance",
+    description: "Connecting our neighbors facing homelessness or housing instability to the help they need.",
+    icon: "M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z",
+  },
+];
+---
+
+<Layout
+  title="Donate"
+  description="Support SCUCS and help older adults, adults with disabilities, and our neighbors facing homelessness in South Jersey live safely and independently."
+>
+  <section class="bg-brand-sky/10">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
+      <div class="text-center lg:text-left">
+        <h1 class="text-4xl font-extrabold tracking-tight text-brand-primary sm:text-5xl">
+          Your Gift Helps Our Neighbors Live Safely and With Dignity
+        </h1>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--color-ink)]">
+          SCUCS is a 501(c)(3) nonprofit, and every donation directly supports in-home care, transportation,
+          community programs, and emergency assistance for older adults, adults with disabilities, and individuals
+          facing homelessness across Camden, Burlington, and Gloucester counties.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+          <a
+            href="#give-by-mail"
+            class="w-full rounded-md bg-brand-accent px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
+          >
+            See How to Give
+          </a>
+          <a
+            href="/contact-us"
+            class="w-full rounded-md border-2 border-brand-primary px-8 py-4 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
+          >
+            Ask a Question
+          </a>
+        </div>
+      </div>
+
+      <FramedImage
+        class="order-first lg:order-last"
+        src={communityServicesPhoto}
+        alt="A group of older adults and an adult with a disability laughing together during an activity at a SCUCS community center"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="impact-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 id="impact-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        Where Your Donation Goes
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-ink)]">
+        93% of every dollar raised goes directly to services and activities that support our neighbors in need.
+      </p>
+      <p class="mt-2 text-base text-[var(--color-ink)]">
+        <a href="/transparency" class="font-semibold text-brand-primary hover:underline">
+          See our full financial transparency &amp; Form 990 &rarr;
+        </a>
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {impactAreas.map((area) => (
+        <li class="flex flex-col items-center rounded-lg border border-slate-200 p-6 text-center shadow-sm">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-sky/15">
+            <svg class="h-8 w-8 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={area.icon} />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-brand-primary">{area.title}</h3>
+          <p class="mt-2 text-base leading-relaxed text-[var(--color-ink)]">{area.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="give-by-mail" aria-labelledby="ways-to-give-heading" class="bg-brand-sky/10 scroll-mt-20">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 id="ways-to-give-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+          Ways to Give
+        </h2>
+        <p class="mt-4 text-lg text-[var(--color-ink)]">
+          SCUCS currently accepts donations by mail. Here's everything you need to send a gift.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
+        <div class="rounded-xl bg-white p-8 shadow-sm">
+          <h3 class="text-xl font-bold text-brand-primary">Give by Check</h3>
+          <p class="mt-3 text-base leading-relaxed text-[var(--color-ink)]">
+            Make your check payable to <span class="font-semibold">"SCUCS, Inc."</span> and mail it to:
+          </p>
+          <address class="mt-4 rounded-lg border-2 border-dashed border-brand-primary/40 bg-brand-sky/10 p-5 text-base not-italic leading-relaxed text-[var(--color-ink)]">
+            <span class="font-bold text-brand-primary">SCUCS, Inc.</span><br />
+            537 W Nicholson Road<br />
+            Audubon, NJ 08106
+          </address>
+          <p class="mt-4 text-base leading-relaxed text-[var(--color-ink)]">
+            Have questions about donating? Call us at{" "}
+            <a href="tel:+18564561121" class="font-semibold text-brand-primary hover:underline">(856) 456-1121</a>{" "}
+            or email{" "}
+            <a href="mailto:scucs@scucs.org" class="font-semibold text-brand-primary hover:underline">scucs@scucs.org</a>.
+          </p>
+        </div>
+
+        <div class="rounded-xl bg-white p-8 shadow-sm">
+          <h3 class="text-xl font-bold text-brand-primary">Give in Memory or in Honor</h3>
+          <p class="mt-3 text-base leading-relaxed text-[var(--color-ink)]">
+            Want to honor a loved one or celebrate a special occasion? Simply note the name of the person you're
+            remembering or honoring &mdash; and, if it's for a specific program &mdash; on the memo line of your
+            check.
+          </p>
+          <h3 class="mt-8 text-xl font-bold text-brand-primary">Corporate &amp; Group Giving</h3>
+          <p class="mt-3 text-base leading-relaxed text-[var(--color-ink)]">
+            Businesses, civic groups, and faith communities are welcome to organize a fundraiser or sponsor a
+            program.{" "}
+            <a href="/contact-us" class="font-semibold text-brand-primary hover:underline">Contact us</a>{" "}
+            to talk through the possibilities.
+          </p>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-8 max-w-5xl rounded-xl border border-slate-200 bg-white p-6 text-center">
+        <p class="text-base leading-relaxed text-[var(--color-ink)]">
+          SCUCS, Inc. is a 501(c)(3) tax-exempt organization, so your donation may be tax-deductible to the extent
+          allowed by law. Contact our office if you'd like a receipt for your records.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials
+    heading="Why Your Gift Matters"
+    intro="Hear from the people and families your support helps every day."
+    limit={2}
+    tone="white"
+  />
+
+  <section aria-labelledby="other-ways-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 id="other-ways-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        More Ways to Support Us
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-ink)]">
+        Not able to give right now? There are still meaningful ways to help.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
+      <a
+        href="/volunteer"
+        class="flex flex-col items-center rounded-lg border border-slate-200 p-6 text-center shadow-sm transition hover:shadow-md"
+      >
+        <h3 class="text-lg font-bold text-brand-primary">Volunteer Your Time</h3>
+        <p class="mt-2 text-base leading-relaxed text-[var(--color-ink)]">
+          Join the 100+ volunteers who help deliver food, rides, and support each week.
+        </p>
+      </a>
+      <a
+        href="https://www.facebook.com/SCUCS-Inc-624076740946742/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col items-center rounded-lg border border-slate-200 p-6 text-center shadow-sm transition hover:shadow-md"
+      >
+        <h3 class="text-lg font-bold text-brand-primary">Follow &amp; Share</h3>
+        <p class="mt-2 text-base leading-relaxed text-[var(--color-ink)]">
+          Follow SCUCS on Facebook and share our mission with your friends and family.
+        </p>
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scucs.org/sitemap-index.xml

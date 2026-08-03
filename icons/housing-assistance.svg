@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="housingAssistanceTitle">
+  <title id="housingAssistanceTitle">Housing Assistance</title>
+  <g fill="#0056b3">
+    <!-- Roof -->
+    <path d="M32 8L6 30h8v2h36v-2h8L32 8z"/>
+    <!-- Chimney -->
+    <rect x="44" y="16" width="6" height="10"/>
+    <!-- Walls -->
+    <rect x="14" y="32" width="36" height="24"/>
+    <!-- Door -->
+    <rect x="28" y="40" width="8" height="16" fill="#fff"/>
+    <!-- Windows -->
+    <rect x="18" y="36" width="7" height="7" fill="#fff"/>
+    <rect x="39" y="36" width="7" height="7" fill="#fff"/>
+  </g>
+</svg>

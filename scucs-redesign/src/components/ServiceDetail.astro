@@ -1,0 +1,165 @@
+---
+import FramedImage from "./FramedImage.astro";
+import type { ServiceData } from "../data/services";
+
+interface Props {
+  service: ServiceData;
+}
+
+const { service } = Astro.props;
+---
+
+<div class:list={["grid items-start gap-12", service.photo ? "lg:grid-cols-2" : ""]}>
+  <div class:list={[!service.photo && "mx-auto max-w-3xl"]}>
+    <p class="mt-4 text-lg leading-relaxed text-[var(--color-ink)]">{service.intro}</p>
+
+    {service.subPrograms && (
+      <div class="mt-8 space-y-6">
+        {service.subPrograms.map((program) => (
+          <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 class="text-lg font-bold text-brand-primary">{program.title}</h3>
+            <p class="mt-2 text-base leading-relaxed text-[var(--color-ink)]">{program.description}</p>
+            {program.phone && (
+              <p class="mt-2 text-base">
+                <a href={`tel:+1${program.phone.replace(/-/g, "")}`} class="font-semibold text-brand-primary hover:underline">
+                  {program.phone}
+                </a>
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    )}
+
+    {service.programGroups && (
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        {service.programGroups.map((group) => (
+          <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 class="text-base font-bold text-brand-primary">{group.label}</h3>
+            <ul class="mt-3 space-y-2 text-base leading-relaxed text-[var(--color-ink)]">
+              {group.items.map((item) => (
+                <li class="flex gap-2">
+                  <svg class="mt-1 h-4 w-4 flex-none text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {service.notes && (
+      <ul class="mt-8 space-y-3 text-base leading-relaxed text-[var(--color-ink)]">
+        {service.notes.map((note) => (
+          <li class="flex gap-2">
+            <svg class="mt-1 h-4 w-4 flex-none text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{note}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {service.documentGroups && (
+      <div class="mt-8 space-y-4">
+        {service.documentGroups.map((group) => (
+          <div
+            class:list={[
+              "rounded-lg border p-5 shadow-sm",
+              group.highlight ? "border-brand-danger bg-brand-danger/5" : "border-slate-200 bg-white",
+            ]}
+          >
+            <h3 class:list={["text-base font-bold", group.highlight ? "text-brand-danger-dark" : "text-brand-primary"]}>
+              {group.label}
+            </h3>
+            {group.description && (
+              <p class="mt-1 text-sm leading-relaxed text-[var(--color-ink)]">{group.description}</p>
+            )}
+            <div class="mt-3 flex flex-wrap gap-3">
+              {group.links.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class:list={[
+                    "inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-semibold",
+                    group.highlight
+                      ? "border-brand-danger text-brand-danger-dark hover:bg-brand-danger/10"
+                      : "border-brand-primary text-brand-primary hover:bg-brand-primary/5",
+                  ]}
+                >
+                  <svg class="h-4 w-4 flex-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+                  </svg>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {service.pickupLocation && (
+      <div class="mt-8 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <h3 class="text-lg font-bold text-brand-primary">Trip Pickup Location &amp; Directions</h3>
+        <p class="mt-2 text-base leading-relaxed text-[var(--color-ink)]">
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(service.pickupLocation.address)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold text-brand-primary hover:underline"
+          >
+            {service.pickupLocation.address}
+          </a>
+        </p>
+        <p class="mt-1 text-base leading-relaxed text-[var(--color-ink)]">{service.pickupLocation.addressNote}</p>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          {service.pickupLocation.directions.map((direction) => (
+            <div class="rounded-md bg-brand-sky/10 p-4">
+              <p class="font-bold text-brand-primary">{direction.from}</p>
+              <p class="mt-1 text-sm leading-relaxed text-[var(--color-ink)]">{direction.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {service.faqs && (
+      <div class="mt-8">
+        <h3 class="text-lg font-bold text-brand-primary">Frequently Asked Questions</h3>
+        <div class="mt-3 space-y-3">
+          {service.faqs.map((faq) => (
+            <details class="group rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <summary class="cursor-pointer list-none text-base font-semibold text-brand-primary marker:content-none">
+                <span class="flex items-center justify-between gap-3">
+                  {faq.q}
+                  <svg class="h-5 w-5 flex-none transition group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-base leading-relaxed text-[var(--color-ink)]">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <p class="mt-8 rounded-lg bg-brand-primary/5 p-4 text-base font-semibold text-brand-primary">
+      {service.contactNote}
+    </p>
+  </div>
+
+  {service.photo && (
+    <FramedImage
+      class="order-first lg:order-last"
+      src={service.photo}
+      alt={service.photoAlt ?? ""}
+    />
+  )}
+</div>

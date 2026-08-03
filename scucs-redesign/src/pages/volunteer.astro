@@ -1,0 +1,147 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FramedImage from "../components/FramedImage.astro";
+import communityServicesPhoto from "../assets/community-services-photo.jpg";
+
+const opportunities = [
+  {
+    title: "Shopping for Shut-Ins",
+    description:
+      "Take a shopping list to the supermarket or pharmacy for a homebound Camden County senior who can't shop for themselves. This bi-weekly service depends on volunteer availability.",
+    icon: "M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z",
+  },
+  {
+    title: "Food Shelf & Food Bags",
+    description:
+      "Help prepare and deliver food bags of non-perishable items to Camden County seniors facing food insecurity, using items donated by local schools, churches, and companies.",
+    icon: "M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z",
+  },
+  {
+    title: "Clerical & Office Assistance",
+    description:
+      "Support our team with day-to-day administrative tasks that help keep programs running smoothly for the people we serve.",
+    icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+  },
+  {
+    title: "Trip Escorts",
+    description:
+      "Accompany groups on SCUCS Travel & Tours day trips, overnight trips, and cruises, helping make sure every traveler has a safe and enjoyable experience.",
+    icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6-13l6 3m0 0l5.447-2.724A1 1 0 0121 5.618v10.764a1 1 0 01-.553.894L15 20M9 7v13m6-13v13",
+  },
+];
+
+const impactStats = [
+  { value: "100+", label: "Volunteers currently supporting SCUCS programs" },
+  { value: "5 days", label: "Some volunteers give their time as often as five days a week" },
+];
+---
+
+<Layout
+  title="Volunteer"
+  description="Volunteer with SCUCS and help shop for shut-ins, assist with food programs, and support older adults and adults with disabilities in South Jersey."
+>
+  <section class="bg-brand-sky/10">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
+      <div class="text-center lg:text-left">
+        <h1 class="text-4xl font-extrabold tracking-tight text-brand-primary sm:text-5xl">
+          Give Your Time. Change a Life.
+        </h1>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--color-ink)]">
+          SCUCS is always looking for volunteers to help with our programs and services. Join the 100+ volunteers
+          &mdash; some giving their time five days a week &mdash; who help us provide the best possible support to
+          our neighbors in South Jersey.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+          <a
+            href="tel:+18564561121"
+            class="w-full rounded-md bg-brand-primary px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
+          >
+            Call (856) 456-1121
+          </a>
+          <a
+            href="#opportunities"
+            class="w-full rounded-md border-2 border-brand-primary px-8 py-4 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
+          >
+            See Opportunities
+          </a>
+        </div>
+      </div>
+
+      <FramedImage
+        class="order-first lg:order-last"
+        src={communityServicesPhoto}
+        alt="A group of older adults and an adult with a disability laughing together during an activity at a SCUCS community center"
+      />
+    </div>
+  </section>
+
+  <section id="opportunities" aria-labelledby="opportunities-heading" class="mx-auto max-w-7xl scroll-mt-20 px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 id="opportunities-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        Volunteer Opportunities
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-ink)]">
+        Whatever your schedule or skills, there's likely a way for you to help.
+      </p>
+    </div>
+
+    <ul class="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
+      {opportunities.map((opportunity) => (
+        <li class="flex flex-col rounded-lg border border-slate-200 p-6 shadow-sm transition hover:shadow-md">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-sky/15">
+            <svg class="h-8 w-8 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={opportunity.icon} />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-brand-primary">{opportunity.title}</h3>
+          <p class="mt-2 flex-1 text-base leading-relaxed text-[var(--color-ink)]">{opportunity.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="impact-heading" class="bg-brand-primary text-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <h2 id="impact-heading" class="sr-only">Volunteer Impact</h2>
+      <dl class="mx-auto grid max-w-3xl gap-8 text-center sm:grid-cols-2">
+        {impactStats.map((stat) => (
+          <div>
+            <dt class="sr-only">{stat.label}</dt>
+            <dd class="text-4xl font-extrabold text-white sm:text-5xl">{stat.value}</dd>
+            <p class="mt-3 text-base text-slate-200">{stat.label}</p>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section aria-labelledby="get-started-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl rounded-2xl bg-brand-sky/10 p-8 text-center sm:p-12">
+      <h2 id="get-started-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        Ready to Get Started?
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-[var(--color-ink)]">
+        Call our Volunteer Coordinator at{" "}
+        <a href="tel:+18564561121" class="font-semibold text-brand-primary hover:underline">(856) 456-1121</a>
+        {" "}to learn about current openings and find the opportunity that's right for you.
+      </p>
+      <p class="mt-4 text-base text-slate-600">
+        All volunteers are screened before being matched with clients.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="tel:+18564561121"
+          class="w-full rounded-md bg-brand-primary px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
+        >
+          Call Now
+        </a>
+        <a
+          href="/contact-us"
+          class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,237 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FramedImage from "../components/FramedImage.astro";
+import Testimonials from "../components/Testimonials.astro";
+import heroPhoto from "../assets/hero-care-photo.jpg";
+import communityServicesPhoto from "../assets/community-services-photo.jpg";
+import transportationPhoto from "../assets/transportation-photo.jpg";
+import supportCoordinationPhoto from "../assets/support-coordination-photo.jpg";
+
+const galleryPhotos = [
+  {
+    src: communityServicesPhoto,
+    alt: "A group of older adults and an adult with a disability laughing together during an activity at a SCUCS community center",
+    caption: "Community Services",
+  },
+  {
+    src: transportationPhoto,
+    alt: "A SCUCS transportation driver helping a senior with a walker board an accessible shuttle",
+    caption: "Sen-Han Transit",
+  },
+  {
+    src: supportCoordinationPhoto,
+    alt: "A support coordinator reviewing a support plan with an adult with a disability at a home office table",
+    caption: "Support Coordination",
+  },
+];
+
+const services = [
+  {
+    title: "Community Services",
+    description: "Programs that connect older adults and people with disabilities to the resources they need close to home.",
+    href: "/services/community-services",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
+  },
+  {
+    title: "In-Home Services",
+    description: "Home health aide and homemaker support that helps older adults and adults with disabilities live safely and independently at home.",
+    href: "/services/in-home-services",
+    icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+  },
+  {
+    title: "Support Coordination",
+    description: "Individualized planning that helps adults with developmental disabilities access services in their community.",
+    href: "/services/support-coordination",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+  },
+  {
+    title: "Housing Supports Program",
+    description: "Medicaid-funded help finding, moving into, and keeping safe, stable housing \u2014 available statewide.",
+    href: "/services/housing-supports",
+    icon: "M3 12l9-9 9 9M4 10v10a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h4a1 1 0 001-1V10",
+  },
+  {
+    title: "Transportation",
+    description: "Sen-Han Transit provides reliable rides to medical appointments, shopping, and community programs.",
+    href: "/services/transportation",
+    icon: "M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m6 0a2 2 0 104 0",
+  },
+  {
+    title: "Travel & Tours",
+    description: "Affordable group trips and outings designed for social connection, recreation, and fun.",
+    href: "/services/travel-and-tours",
+    icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6-13l6 3m0 0l5.447-2.724A1 1 0 0121 5.618v10.764a1 1 0 01-.553.894L15 20M9 7v13m6-13v13",
+  },
+];
+
+const impactStats = [
+  { value: "40+", label: "Years serving older adults, adults with disabilities, and our neighbors facing homelessness" },
+  { value: "93%", label: "Of every dollar raised goes directly to services and activities" },
+  { value: "100+", label: "Volunteers helping deliver food, rides, and support each week" },
+];
+---
+
+<Layout
+  title="Home"
+  description="Senior Citizens United Community Services helps older adults, adults with disabilities, and people facing homelessness in South Jersey live safely and independently."
+>
+  <section class="bg-brand-sky/10">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2 lg:px-8">
+      <div class="text-center lg:text-left">
+        <h1 class="text-4xl font-extrabold tracking-tight text-brand-primary sm:text-5xl">
+          Helping South Jersey's Most Vulnerable Neighbors Live Safely, Independently, and With Dignity
+        </h1>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--color-ink)]">
+          For over 40 years, SCUCS has provided in-home care, transportation, support coordination, and community
+          programs for older adults, adults with disabilities, and individuals facing homelessness across Camden,
+          Burlington, and Gloucester counties.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+          <a
+            href="/contact-us"
+            class="w-full rounded-md bg-brand-primary px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
+          >
+            Get Help Today
+          </a>
+          <a
+            href="/donate"
+            class="w-full rounded-md bg-brand-accent px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
+          >
+            Donate Now
+          </a>
+        </div>
+      </div>
+
+      <FramedImage
+        class="order-first lg:order-last"
+        src={heroPhoto}
+        alt="A home health aide sharing a warm conversation with an older adult client at her kitchen table"
+      />
+    </div>
+  </section>
+
+  <section aria-labelledby="services-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 id="services-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">Our Services</h2>
+      <p class="mt-4 text-lg text-[var(--color-ink)]">
+        Explore the programs SCUCS offers &mdash; every service is designed to support independence and quality of
+        life.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <li class="flex flex-col rounded-lg border border-slate-200 p-6 shadow-sm transition hover:shadow-md">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-sky/15">
+            <svg
+              class="h-8 w-8 text-brand-primary"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={service.icon} />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-brand-primary">{service.title}</h3>
+          <p class="mt-2 flex-1 text-base leading-relaxed text-[var(--color-ink)]">{service.description}</p>
+          <a
+            href={service.href}
+            class="mt-4 inline-flex items-center font-semibold text-brand-primary hover:underline"
+          >
+            Learn more<span class="sr-only"> about {service.title}</span>
+            <span aria-hidden="true" class="ml-1">&rarr;</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="gallery-heading" class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 id="gallery-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+          Our Services in Action
+        </h2>
+        <p class="mt-4 text-lg text-[var(--color-ink)]">
+          A glimpse of the everyday moments SCUCS staff and volunteers share with the people we serve.
+        </p>
+      </div>
+
+      <ul class="mt-12 grid gap-6 sm:grid-cols-3">
+        {galleryPhotos.map((photo) => (
+          <li>
+            <FramedImage
+              src={photo.src}
+              alt={photo.alt}
+              widths={[300, 450, 600]}
+              sizes="(min-width: 640px) 33vw, 100vw"
+              rounded="lg"
+              offset="sm"
+              shadow="shadow-md"
+            />
+            <p class="mt-3 text-center text-base font-semibold text-brand-primary">{photo.caption}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="mission-heading" class="bg-brand-primary text-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 id="mission-heading" class="text-3xl font-extrabold sm:text-4xl">Our Mission</h2>
+        <p class="mt-6 text-xl leading-relaxed text-slate-100">
+          Senior Citizens United Community Services is a not-for-profit social service agency dedicated to
+          enhancing the quality of life, encouraging independence, and providing a safe and supportive living
+          environment for older adults, adults with disabilities, and individuals facing homelessness &mdash;
+          especially those with the greatest socio-economic need.
+        </p>
+      </div>
+
+      <dl class="mx-auto mt-14 grid max-w-4xl gap-8 text-center sm:grid-cols-3">
+        {impactStats.map((stat) => (
+          <div>
+            <dt class="sr-only">{stat.label}</dt>
+            <dd class="text-4xl font-extrabold text-white sm:text-5xl">{stat.value}</dd>
+            <p class="mt-3 text-base text-slate-200">{stat.label}</p>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <section aria-labelledby="cta-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="rounded-2xl bg-brand-sky/10 px-6 py-12 text-center sm:px-12">
+      <h2 id="cta-heading" class="text-3xl font-extrabold text-brand-primary sm:text-4xl">
+        Need Help, or Want to Make a Difference?
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-ink)]">
+        Whether you or a loved one needs support, or you're ready to give your time or a donation, SCUCS is here to
+        connect you.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/contact-us"
+          class="w-full rounded-md bg-brand-primary px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
+        >
+          Get Help
+        </a>
+        <a
+          href="/volunteer"
+          class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
+        >
+          Volunteer
+        </a>
+        <a
+          href="/donate"
+          class="w-full rounded-md bg-brand-accent px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
+        >
+          Donate
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
