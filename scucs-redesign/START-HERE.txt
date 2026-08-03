@@ -66,3 +66,13 @@ Key pages in this redesign
 Need help later?
 ----------------
 Open this project in Cursor and continue from there.
+
+
+GitHub Pages preview (for sharing a link)
+-----------------------------------------
+After the deploy workflow is pushed and the repo is public, the preview URL is:
+
+  https://xample83.github.io/scucs-website/
+
+Local/dev builds still use http://localhost:4321 with normal root paths.
+The GitHub Actions deploy sets GITHUB_PAGES=true so links work under /scucs-website/.

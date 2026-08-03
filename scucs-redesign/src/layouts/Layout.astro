@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { Image } from "astro:assets";
 import scucsLogo from "../assets/scucs-logo.png";
+import { path } from "../utils/path";
 
 interface Props {
   title: string;
@@ -19,8 +20,8 @@ const {
 
 const pageTitle = `${title} | SCUCS`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const socialImageUrl = new URL(image, Astro.site).toString();
-const logoUrl = new URL("/logo.png", Astro.site).toString();
+const socialImageUrl = new URL(path(image), Astro.site).toString();
+const logoUrl = new URL(path("/logo.png"), Astro.site).toString();
 
 // Set PUBLIC_GA_MEASUREMENT_ID in a .env file (local) or your host's environment
 // variable settings (production) once a GA4 property has been created. See .env.example.
@@ -84,17 +85,17 @@ const currentYear = new Date().getFullYear();
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href={path("/favicon.svg")} />
+    <link rel="icon" type="image/png" sizes="32x32" href={path("/favicon-32x32.png")} />
+    <link rel="icon" type="image/png" sizes="16x16" href={path("/favicon-16x16.png")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={path("/apple-touch-icon.png")} />
+    <link rel="manifest" href={path("/site.webmanifest")} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#1c5aa0" />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" type="application/rss+xml" title="SCUCS News" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="SCUCS News" href={path("/rss.xml")} />
     <title>{pageTitle}</title>
 
     <meta property="og:type" content={type} />
@@ -139,7 +140,7 @@ const currentYear = new Date().getFullYear();
 
     <header class="sticky top-0 z-40 border-b border-slate-200 bg-white">
       <nav aria-label="Primary" class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
-        <a href="/" class="flex items-center gap-2" aria-label="Senior Citizens United Community Services - Home">
+        <a href={path("/")} class="flex items-center gap-2" aria-label="Senior Citizens United Community Services - Home">
           <Image
             src={scucsLogo}
             alt=""
@@ -152,7 +153,7 @@ const currentYear = new Date().getFullYear();
         <ul class="hidden items-center gap-6 text-base font-semibold text-[var(--color-ink)] lg:flex">
           {primaryNavLinks.map((link) => (
             <li>
-              <a href={link.href} class="rounded-sm hover:text-brand-primary hover:underline">
+              <a href={path(link.href)} class="rounded-sm hover:text-brand-primary hover:underline">
                 {link.label}
               </a>
             </li>
@@ -164,13 +165,13 @@ const currentYear = new Date().getFullYear();
             (856) 456-1121
           </a>
           <a
-            href="/donate"
+            href={path("/donate")}
             class="rounded-md bg-brand-accent px-5 py-2.5 text-base font-bold text-white shadow-sm hover:bg-brand-accent-dark"
           >
             Donate
           </a>
           <a
-            href="/find-help"
+            href={path("/find-help")}
             class="rounded-md bg-brand-danger px-5 py-2.5 text-base font-bold text-white shadow-sm hover:bg-brand-danger-dark"
           >
             Find Help
@@ -198,7 +199,7 @@ const currentYear = new Date().getFullYear();
         <ul class="flex flex-col gap-1 px-4 py-4 text-base font-semibold text-[var(--color-ink)] sm:px-6">
           {primaryNavLinks.map((link) => (
             <li>
-              <a href={link.href} class="block rounded-md px-3 py-3 hover:bg-slate-100 hover:text-brand-primary">
+              <a href={path(link.href)} class="block rounded-md px-3 py-3 hover:bg-slate-100 hover:text-brand-primary">
                 {link.label}
               </a>
             </li>
@@ -208,13 +209,13 @@ const currentYear = new Date().getFullYear();
               Call (856) 456-1121
             </a>
             <a
-              href="/donate"
+              href={path("/donate")}
               class="rounded-md bg-brand-accent px-5 py-3 text-center text-base font-bold text-white shadow-sm hover:bg-brand-accent-dark"
             >
               Donate
             </a>
             <a
-              href="/find-help"
+              href={path("/find-help")}
               class="rounded-md bg-brand-danger px-5 py-3 text-center text-base font-bold text-white shadow-sm hover:bg-brand-danger-dark"
             >
               Find Help
@@ -258,7 +259,7 @@ const currentYear = new Date().getFullYear();
           <ul class="mt-4 space-y-2 text-base text-slate-200">
             {footerQuickLinks.map((link) => (
               <li>
-                <a href={link.href} class="hover:text-white hover:underline">
+                <a href={path(link.href)} class="hover:text-white hover:underline">
                   {link.label}
                 </a>
               </li>

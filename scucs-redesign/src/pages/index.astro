@@ -6,6 +6,7 @@ import heroPhoto from "../assets/hero-care-photo.jpg";
 import communityServicesPhoto from "../assets/community-services-photo.jpg";
 import transportationPhoto from "../assets/transportation-photo.jpg";
 import supportCoordinationPhoto from "../assets/support-coordination-photo.jpg";
+import { path } from "../utils/path";
 
 const galleryPhotos = [
   {
@@ -88,13 +89,13 @@ const impactStats = [
         </p>
         <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
           <a
-            href="/contact-us"
+            href={path("/contact-us")}
             class="w-full rounded-md bg-brand-primary px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
           >
             Get Help Today
           </a>
           <a
-            href="/donate"
+            href={path("/donate")}
             class="w-full rounded-md bg-brand-accent px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
           >
             Donate Now
@@ -136,7 +137,7 @@ const impactStats = [
           <h3 class="mt-4 text-xl font-bold text-brand-primary">{service.title}</h3>
           <p class="mt-2 flex-1 text-base leading-relaxed text-[var(--color-ink)]">{service.description}</p>
           <a
-            href={service.href}
+            href={path(service.href)}
             class="mt-4 inline-flex items-center font-semibold text-brand-primary hover:underline"
           >
             Learn more<span class="sr-only"> about {service.title}</span>
@@ -214,19 +215,19 @@ const impactStats = [
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a
-          href="/contact-us"
+          href={path("/contact-us")}
           class="w-full rounded-md bg-brand-primary px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
         >
           Get Help
         </a>
         <a
-          href="/volunteer"
+          href={path("/volunteer")}
           class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
         >
           Volunteer
         </a>
         <a
-          href="/donate"
+          href={path("/donate")}
           class="w-full rounded-md bg-brand-accent px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
         >
           Donate

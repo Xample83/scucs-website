@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { path } from "../../utils/path";
 
 const posts = (await getCollection("news")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
@@ -30,7 +31,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "nu
         {posts.map((post) => (
           <li>
             <a
-              href={`/news/${post.id}`}
+              href={path(`/news/${post.id}`)}
               class="block rounded-lg border border-slate-200 p-6 shadow-sm transition hover:shadow-md"
             >
               <div class="flex flex-wrap items-center gap-3 text-sm">
@@ -87,7 +88,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "nu
           Follow on Facebook
         </a>
         <a
-          href="/contact-us"
+          href={path("/contact-us")}
           class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
         >
           Contact Us
@@ -95,7 +96,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "nu
       </div>
       <p class="mt-6">
         <a
-          href="/rss.xml"
+          href={path("/rss.xml")}
           class="inline-flex items-center gap-1.5 text-base font-semibold text-brand-primary hover:underline"
         >
           <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

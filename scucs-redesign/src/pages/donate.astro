@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import FramedImage from "../components/FramedImage.astro";
 import Testimonials from "../components/Testimonials.astro";
 import communityServicesPhoto from "../assets/community-services-photo.jpg";
+import { path } from "../utils/path";
 
 const impactAreas = [
   {
@@ -51,7 +52,7 @@ const impactAreas = [
             See How to Give
           </a>
           <a
-            href="/contact-us"
+            href={path("/contact-us")}
             class="w-full rounded-md border-2 border-brand-primary px-8 py-4 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
           >
             Ask a Question
@@ -76,7 +77,7 @@ const impactAreas = [
         93% of every dollar raised goes directly to services and activities that support our neighbors in need.
       </p>
       <p class="mt-2 text-base text-[var(--color-ink)]">
-        <a href="/transparency" class="font-semibold text-brand-primary hover:underline">
+        <a href={path("/transparency")} class="font-semibold text-brand-primary hover:underline">
           See our full financial transparency &amp; Form 990 &rarr;
         </a>
       </p>
@@ -138,7 +139,7 @@ const impactAreas = [
           <p class="mt-3 text-base leading-relaxed text-[var(--color-ink)]">
             Businesses, civic groups, and faith communities are welcome to organize a fundraiser or sponsor a
             program.{" "}
-            <a href="/contact-us" class="font-semibold text-brand-primary hover:underline">Contact us</a>{" "}
+            <a href={path("/contact-us")} class="font-semibold text-brand-primary hover:underline">Contact us</a>{" "}
             to talk through the possibilities.
           </p>
         </div>
@@ -172,7 +173,7 @@ const impactAreas = [
 
     <div class="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
       <a
-        href="/volunteer"
+        href={path("/volunteer")}
         class="flex flex-col items-center rounded-lg border border-slate-200 p-6 text-center shadow-sm transition hover:shadow-md"
       >
         <h3 class="text-lg font-bold text-brand-primary">Volunteer Your Time</h3>

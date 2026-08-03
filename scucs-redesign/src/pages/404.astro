@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { path } from "../utils/path";
 
 const helpfulLinks = [
   { href: "/", label: "Home" },
@@ -26,7 +27,7 @@ const helpfulLinks = [
     <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
       {helpfulLinks.map((link, index) => (
         <a
-          href={link.href}
+          href={path(link.href)}
           class:list={[
             "rounded-md px-6 py-3 text-lg font-bold shadow-sm",
             index === 0

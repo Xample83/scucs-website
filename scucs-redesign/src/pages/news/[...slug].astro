@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import { path } from "../../utils/path";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news");
@@ -18,7 +19,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "nu
 
 <Layout title={post.data.title} description={post.data.summary} type="article">
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-    <a href="/news" class="inline-flex items-center font-semibold text-brand-primary hover:underline">
+    <a href={path("/news")} class="inline-flex items-center font-semibold text-brand-primary hover:underline">
       <span aria-hidden="true" class="mr-1">&larr;</span>
       Back to News
     </a>
@@ -45,13 +46,13 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { month: "long", day: "nu
       </p>
       <div class="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a
-          href="/contact-us"
+          href={path("/contact-us")}
           class="w-full rounded-md bg-brand-primary px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
         >
           Contact Us
         </a>
         <a
-          href="/news"
+          href={path("/news")}
           class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
         >
           More News

@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import ServiceDetail from "../../components/ServiceDetail.astro";
 import { services } from "../../data/services";
+import { path } from "../../utils/path";
 
 const service = services.find((s) => s.id === "transportation")!;
 ---
@@ -9,7 +10,7 @@ const service = services.find((s) => s.id === "transportation")!;
 <Layout title={service.title} description={service.intro}>
   <section class="bg-brand-sky/10">
     <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-      <a href="/services" class="inline-flex items-center gap-1 text-sm font-semibold text-brand-primary hover:underline">
+      <a href={path("/services")} class="inline-flex items-center gap-1 text-sm font-semibold text-brand-primary hover:underline">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
@@ -30,7 +31,7 @@ const service = services.find((s) => s.id === "transportation")!;
         SCUCS offers a full range of services to help older adults, adults with disabilities, and our neighbors facing homelessness.
       </p>
       <a
-        href="/services"
+        href={path("/services")}
         class="mt-6 inline-block rounded-md bg-brand-primary px-6 py-3 text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark"
       >
         View All Services

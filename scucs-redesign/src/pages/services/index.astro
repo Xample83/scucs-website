@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { services } from "../../data/services";
+import { path } from "../../utils/path";
 ---
 
 <Layout
@@ -30,7 +31,7 @@ import { services } from "../../data/services";
           </div>
           <h3 class="mt-4 text-xl font-bold text-brand-primary">{service.title}</h3>
           <p class="mt-2 flex-1 text-base leading-relaxed text-[var(--color-ink)]">{service.summary}</p>
-          <a href={`/services/${service.id}`} class="mt-4 inline-flex items-center font-semibold text-brand-primary hover:underline">
+          <a href={path(`/services/${service.id}`)} class="mt-4 inline-flex items-center font-semibold text-brand-primary hover:underline">
             Learn more<span class="sr-only"> about {service.title}</span>
             <span aria-hidden="true" class="ml-1">&rarr;</span>
           </a>
@@ -53,7 +54,7 @@ import { services } from "../../data/services";
           Call (856) 456-1121
         </a>
         <a
-          href="/contact-us"
+          href={path("/contact-us")}
           class="w-full rounded-md border-2 border-white px-6 py-3 text-center text-lg font-bold text-white hover:bg-white hover:text-brand-primary sm:w-auto"
         >
           Contact Us

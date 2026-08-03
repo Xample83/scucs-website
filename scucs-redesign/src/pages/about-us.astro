@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import FramedImage from "../components/FramedImage.astro";
 import heroPhoto from "../assets/hero-care-photo.jpg";
+import { path } from "../utils/path";
 
 const milestones = [
   {
@@ -62,13 +63,13 @@ const partners = [
         </p>
         <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
           <a
-            href="/services"
+            href={path("/services")}
             class="w-full rounded-md bg-brand-primary px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
           >
             Explore Our Services
           </a>
           <a
-            href="/donate"
+            href={path("/donate")}
             class="w-full rounded-md bg-brand-accent px-8 py-4 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
           >
             Support Our Mission
@@ -156,19 +157,19 @@ const partners = [
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a
-          href="/contact-us"
+          href={path("/contact-us")}
           class="w-full rounded-md bg-brand-primary px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark sm:w-auto"
         >
           Contact Us
         </a>
         <a
-          href="/volunteer"
+          href={path("/volunteer")}
           class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
         >
           Volunteer
         </a>
         <a
-          href="/donate"
+          href={path("/donate")}
           class="w-full rounded-md bg-brand-accent px-6 py-3 text-center text-lg font-bold text-white shadow-sm hover:bg-brand-accent-dark sm:w-auto"
         >
           Donate

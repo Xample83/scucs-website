@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import FramedImage from "../components/FramedImage.astro";
 import supportCoordinationPhoto from "../assets/support-coordination-photo.jpg";
+import { path } from "../utils/path";
 
 const contactCards = [
   {
@@ -136,7 +137,7 @@ const contactCards = [
       </p>
       <div class="mt-8 flex justify-center">
         <a
-          href="/find-help"
+          href={path("/find-help")}
           class="rounded-md bg-white px-6 py-3 text-center text-lg font-bold text-brand-primary shadow-sm hover:bg-slate-100"
         >
           Go to Find Help

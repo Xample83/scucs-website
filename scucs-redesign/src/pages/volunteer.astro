@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import FramedImage from "../components/FramedImage.astro";
 import communityServicesPhoto from "../assets/community-services-photo.jpg";
+import { path } from "../utils/path";
 
 const opportunities = [
   {
@@ -136,7 +137,7 @@ const impactStats = [
           Call Now
         </a>
         <a
-          href="/contact-us"
+          href={path("/contact-us")}
           class="w-full rounded-md border-2 border-brand-primary px-6 py-3 text-center text-lg font-bold text-brand-primary hover:bg-brand-primary hover:text-white sm:w-auto"
         >
           Contact Us

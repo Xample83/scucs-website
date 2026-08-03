@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { path } from "../utils/path";
 
 const factCards = [
   {
@@ -57,7 +58,7 @@ const factCards = [
     </p>
     <p class="mt-4 text-lg leading-relaxed text-[var(--color-ink)]">
       Have a question about our leadership or governance?{" "}
-      <a href="/contact-us" class="font-semibold text-brand-primary hover:underline">Contact our office</a>{" "}
+      <a href={path("/contact-us")} class="font-semibold text-brand-primary hover:underline">Contact our office</a>{" "}
       and we're happy to help.
     </p>
   </section>
@@ -98,7 +99,7 @@ const factCards = [
       93% of every dollar raised goes directly to services and activities that support our neighbors in need
       &mdash; in-home care, transportation, community programs, and emergency assistance.
     </p>
-    <a href="/donate" class="mt-6 inline-block font-semibold text-brand-primary hover:underline">
+    <a href={path("/donate")} class="mt-6 inline-block font-semibold text-brand-primary hover:underline">
       See how you can give &rarr;
     </a>
   </section>

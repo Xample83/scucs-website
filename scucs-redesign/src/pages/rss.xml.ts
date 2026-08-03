@@ -8,6 +8,9 @@ export async function GET(context: APIContext) {
     (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
   );
 
+  const rawBase = import.meta.env.BASE_URL || "/";
+  const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+
   return rss({
     title: "SCUCS News",
     description:
@@ -17,7 +20,7 @@ export async function GET(context: APIContext) {
       title: post.data.title,
       description: post.data.summary,
       pubDate: post.data.publishDate,
-      link: `/news/${post.id}/`,
+      link: `${base}news/${post.id}/`,
       categories: [post.data.category],
     })),
     customData: `<language>en-us</language>`,
