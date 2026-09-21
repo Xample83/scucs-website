@@ -1,0 +1,447 @@
+/**
+ * SCUCS Risk Mitigation Fund — Training CSS
+ * ==========================================
+ * PURPOSE
+ *   Shareable plain-CSS reference that mirrors how the landlord portal is styled
+ *   on the Astro redesign. The live site uses Tailwind utility classes + tokens
+ *   from src/styles/global.css. This file rewrites those patterns as readable
+ *   CSS so trainees can see colors, spacing, buttons, and form styling clearly.
+ *
+ * LIVE SOURCE OF TRUTH
+ *   - Brand tokens: scucs-redesign/src/styles/global.css
+ *   - Page layout:  scucs-redesign/src/pages/services/community-services/risk-mitigation-fund.astro
+ *   - Form styles:  scucs-redesign/src/components/RiskMitigationForm.astro
+ *
+ * NOTE
+ *   This file is for training / documentation. It is not imported by the site.
+ *   Scope: Camden County landlords only.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Brand tokens (same values as global.css @theme)                         */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --brand-primary: #1c5aa0;       /* Main SCUCS blue — headings, primary buttons */
+  --brand-primary-dark: #123f74;  /* Hover state for primary buttons */
+  --brand-sky: #6491c4;           /* Lighter blue — soft section backgrounds */
+  --brand-sky-dark: #4c76a8;
+  --brand-accent: #92400e;        /* Warm brown — kickers / small labels */
+  --brand-accent-dark: #6f3009;
+  --brand-danger: #b91c1c;        /* Required-field asterisks / errors */
+  --brand-danger-dark: #991b1b;
+  --ink: #17212b;                 /* Body text */
+  --border-soft: #e2e8f0;         /* slate-200 borders on cards */
+  --border-input: #cbd5e1;        /* slate-300 input borders */
+  --surface-muted: #f8fafc;       /* slate-50 footer band */
+  --max-width: 80rem;             /* ~max-w-7xl content width */
+  --form-max-width: 48rem;        /* ~max-w-3xl form column */
+  --radius: 0.375rem;             /* rounded-md buttons/inputs */
+  --radius-lg: 0.5rem;            /* rounded-lg cards */
+  --radius-2xl: 1rem;             /* rounded-2xl CTA bands */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Base page typography                                                    */
+/* -------------------------------------------------------------------------- */
+
+.rmf-page {
+  color: var(--ink);
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.625;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rmf-page h1,
+.rmf-page h2,
+.rmf-page h3 {
+  color: var(--brand-primary);
+  font-weight: 800;
+}
+
+.rmf-page a:focus-visible,
+.rmf-page button:focus-visible,
+.rmf-page input:focus-visible,
+.rmf-page select:focus-visible,
+.rmf-page textarea:focus-visible {
+  outline: 3px solid var(--brand-accent);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Layout helpers                                                          */
+/* -------------------------------------------------------------------------- */
+
+.rmf-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .rmf-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rmf-container {
+    padding-inline: 2rem;
+  }
+}
+
+/* Soft blue band used for hero + “How it works” */
+.rmf-band-sky {
+  background-color: color-mix(in srgb, var(--brand-sky) 10%, white);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Portal header (logo + “Camden County Landlord Application Portal”)      */
+/* -------------------------------------------------------------------------- */
+
+.rmf-portal-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border-soft);
+  padding-block: 1.5rem;
+}
+
+.rmf-portal-header__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .rmf-portal-header__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.rmf-portal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+.rmf-portal-kicker {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--brand-accent-dark);
+}
+
+.rmf-portal-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.rmf-portal-nav a {
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+.rmf-portal-nav a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Hero                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.rmf-hero {
+  padding-block: 4rem;
+}
+
+.rmf-hero__kicker {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--brand-accent-dark);
+}
+
+.rmf-hero h1 {
+  margin: 0.75rem 0 0;
+  max-width: 56rem;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  letter-spacing: -0.025em;
+}
+
+.rmf-hero__subhead {
+  margin: 1.5rem 0 0;
+  max-width: 48rem;
+  font-size: 1.25rem;
+  line-height: 1.625;
+  color: var(--ink);
+}
+
+.rmf-hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .rmf-hero__actions {
+    flex-direction: row;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Buttons                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.rmf-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+/* Filled primary */
+.rmf-btn--primary {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+.rmf-btn--primary:hover {
+  background: var(--brand-primary-dark);
+}
+
+/* Outline secondary */
+.rmf-btn--outline {
+  background: transparent;
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  box-shadow: none;
+}
+
+.rmf-btn--outline:hover {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+.rmf-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7. “How it works” step cards                                               */
+/* -------------------------------------------------------------------------- */
+
+.rmf-steps {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .rmf-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rmf-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.rmf-step {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.rmf-step__number {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--brand-accent-dark);
+}
+
+.rmf-step h3 {
+  margin: 0.5rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.rmf-step p {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.625;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. Application form                                                        */
+/* -------------------------------------------------------------------------- */
+
+.rmf-form-wrap {
+  max-width: var(--form-max-width);
+  margin-inline: auto;
+}
+
+.rmf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Each fieldset = one section card (Landlord, Property, etc.) */
+.rmf-fieldset {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+@media (min-width: 640px) {
+  .rmf-fieldset {
+    padding: 1.5rem;
+  }
+}
+
+.rmf-fieldset legend {
+  padding-inline: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.rmf-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .rmf-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rmf-grid__full {
+    grid-column: 1 / -1;
+  }
+}
+
+.rmf-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+}
+
+.rmf-required {
+  color: var(--brand-danger);
+}
+
+.rmf-input,
+.rmf-select,
+.rmf-textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.375rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  font-size: 1rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.rmf-input:focus,
+.rmf-select:focus,
+.rmf-textarea:focus {
+  border-color: var(--brand-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-primary) 30%, transparent);
+}
+
+/* Locked county field (Camden only) */
+.rmf-input[readonly] {
+  background: var(--surface-muted);
+  cursor: default;
+}
+
+.rmf-hint {
+  margin: 0.375rem 0 0;
+  font-size: 0.875rem;
+  color: #475569; /* slate-600 */
+}
+
+/* Soft callout boxes (upload list, certification text, staff notice) */
+.rmf-callout {
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  background: color-mix(in srgb, var(--brand-sky) 10%, white);
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.rmf-callout--warning {
+  border: 1px solid color-mix(in srgb, var(--brand-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--brand-accent) 10%, white);
+}
+
+.rmf-callout--success {
+  border: 1px solid color-mix(in srgb, var(--brand-primary) 30%, transparent);
+  background: color-mix(in srgb, var(--brand-sky) 10%, white);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 9. Page footer note                                                        */
+/* -------------------------------------------------------------------------- */
+
+.rmf-page-footer {
+  border-top: 1px solid var(--border-soft);
+  background: var(--surface-muted);
+  padding-block: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 10. Teaching map — Tailwind class → what it does                           */
+/* -------------------------------------------------------------------------- */
+/*
+  On the live Astro pages you will see classes like:
+
+  bg-brand-sky/10     → soft blue section background (10% brand-sky)
+  text-brand-primary  → heading / link blue (#1c5aa0)
+  text-brand-accent-dark → kicker brown (#6f3009)
+  bg-brand-primary    → filled blue button
+  border-brand-primary → outline button border
+  rounded-md / rounded-lg → corner radius
+  max-w-7xl / max-w-3xl → content width limits
+  shadow-sm           → light card elevation
+
+  Brand colors are defined once in global.css and reused site-wide so the
+  Risk Mitigation Fund page matches Home, Services, and Contact.
+*/
