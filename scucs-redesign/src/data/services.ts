@@ -4,9 +4,16 @@ import transportationPhoto from "../assets/transportation-photo.jpg";
 import supportCoordinationPhoto from "../assets/support-coordination-photo.jpg";
 import heroPhoto from "../assets/hero-care-photo.jpg";
 
+export type ProgramItem =
+  | string
+  | {
+      label: string;
+      href: string;
+    };
+
 export interface ProgramGroup {
   label: string;
-  items: string[];
+  items: ProgramItem[];
 }
 
 export interface SubProgram {
@@ -74,7 +81,13 @@ export const services: ServiceData[] = [
     programGroups: [
       {
         label: "Counseling Programs",
-        items: ["Benefits Counseling", "Housing Counseling", "Housing Navigation", "Shared Housing", "State Health Insurance Program (SHIP)"],
+        items: [
+          "Benefits Counseling",
+          { label: "Housing Counseling", href: "/services/housing-counseling" },
+          "Housing Navigation",
+          { label: "Shared Housing", href: "/services/shared-housing" },
+          "State Health Insurance Program (SHIP)",
+        ],
       },
       {
         label: "Food Programs",
@@ -366,5 +379,88 @@ export const services: ServiceData[] = [
       },
     ],
     contactNote: "Call (856) 456-1121, extension 1124, for current trip offerings and pricing.",
+  },
+];
+
+/** Community Services counseling subpages — not shown as top-level Services cards. */
+export const communityCounselingPages: ServiceData[] = [
+  {
+    id: "housing-counseling",
+    title: "Housing Counseling",
+    summary:
+      "Help for adults 60+ in Camden and Gloucester counties finding available, affordable housing.",
+    icon: "M3 12l9-9 9 9M4 10v10a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h4a1 1 0 001-1V10",
+    photo: null,
+    intro:
+      "SCUCS Housing Counseling helps adults age 60 and older in Camden and Gloucester counties find available, affordable housing. Counselors work with you one-on-one to explore options and take the next step with confidence.",
+    programGroups: [
+      {
+        label: "Who this program serves",
+        items: [
+          "Adults age 60+ living in Camden County",
+          "Adults age 60+ living in Gloucester County",
+        ],
+      },
+      {
+        label: "How we help",
+        items: [
+          "Guidance on tenant rights",
+          "Help identifying available housing units",
+          "Support navigating housing waitlists",
+        ],
+      },
+    ],
+    documentGroups: [
+      {
+        label: "Program Brochure",
+        links: [
+          {
+            label: "Download the Housing Counseling brochure (PDF)",
+            href: "https://scucs.org/wp-content/uploads/2025/12/Brochure_Housing_Counseling.pdf",
+          },
+        ],
+      },
+    ],
+    contactNote: "Call (856) 456-1121 and ask for Housing Counseling to schedule an appointment.",
+  },
+  {
+    id: "shared-housing",
+    title: "Shared Housing",
+    summary:
+      "Help finding affordable shared housing options for Camden County residents age 60+ and people with permanent physical disabilities.",
+    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+    photo: null,
+    intro:
+      "Safe, affordable housing can be hard to find. SCUCS Shared Housing supports Camden County residents age 60 and older\u2014and people who are permanently physically disabled\u2014in finding housing that costs less than typical market-rate rent.",
+    programGroups: [
+      {
+        label: "Who this program serves",
+        items: [
+          "Camden County residents age 60+",
+          "Camden County residents who are permanently physically disabled",
+          "Anyone who may benefit from a shared housing arrangement",
+        ],
+      },
+      {
+        label: "How we help",
+        items: [
+          "Identify housing that fits your needs",
+          "Explore more affordable options through partnerships with local apartment communities and subsidized housing providers",
+          "Take the next step with confidence",
+        ],
+      },
+    ],
+    documentGroups: [
+      {
+        label: "Program Brochure",
+        links: [
+          {
+            label: "Download the Shared Housing brochure (PDF)",
+            href: "https://scucs.org/wp-content/uploads/2023/04/comprehensiveHousing-Counseling-brochure.pdf",
+          },
+        ],
+      },
+    ],
+    contactNote: "Call (856) 456-1121 and ask about Shared Housing. We will listen to your situation and help you explore options.",
   },
 ];

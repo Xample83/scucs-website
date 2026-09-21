@@ -1,0 +1,382 @@
+---
+const formAction = import.meta.env.PUBLIC_FORMSPREE_LANDLORD_FUND_URL?.trim() || "";
+const formReady = Boolean(formAction);
+
+const inputClass =
+  "mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-base text-[var(--color-ink)] shadow-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30";
+const labelClass = "block text-sm font-semibold text-brand-primary";
+const sectionClass = "rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6";
+---
+
+{
+  !formReady && (
+    <div
+      class="mb-6 rounded-lg border border-brand-accent/40 bg-brand-accent/10 px-4 py-3 text-base text-[var(--color-ink)]"
+      role="status"
+    >
+      Online submissions are not live yet. Once Formspree is connected, applications will be delivered to{" "}
+      <a href="mailto:landlordfund@scucs.org" class="font-semibold text-brand-primary hover:underline">
+        landlordfund@scucs.org
+      </a>
+      .
+    </div>
+  )
+}
+
+<div id="rmf-success" class="hidden rounded-lg border border-brand-primary/30 bg-brand-sky/10 px-5 py-6" role="status">
+  <h3 class="text-xl font-bold text-brand-primary">Application received</h3>
+  <p class="mt-3 text-base leading-relaxed text-[var(--color-ink)]">
+    Your Risk Mitigation Fund application has been successfully submitted to SCUCS. A member of the SCUCS team will
+    review your application and contact you if additional information or documentation is needed. Please do not submit
+    confidential information by email unless requested by SCUCS.
+  </p>
+</div>
+
+<form
+  id="rmf-form"
+  class="space-y-8"
+  method="POST"
+  enctype="multipart/form-data"
+  action={formReady ? formAction : undefined}
+  data-form-ready={formReady ? "true" : "false"}
+>
+  <input type="hidden" name="_subject" value="Risk Mitigation Fund Application" />
+  {/* Honeypot — leave empty */}
+  <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+    <label for="rmf-website">Website</label>
+    <input type="text" id="rmf-website" name="_gotcha" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <fieldset class={sectionClass}>
+    <legend class="px-1 text-lg font-bold text-brand-primary">Landlord Information</legend>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="sm:col-span-2">
+        <label class={labelClass} for="landlord-name">
+          Property owner / landlord name <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="text" id="landlord-name" name="landlord_name" required autocomplete="organization" />
+      </div>
+      <div class="sm:col-span-2">
+        <label class={labelClass} for="company-name">Company / property management name</label>
+        <input class={inputClass} type="text" id="company-name" name="company_name" autocomplete="organization" />
+      </div>
+      <div>
+        <label class={labelClass} for="contact-person">
+          Contact person <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="text" id="contact-person" name="contact_person" required autocomplete="name" />
+      </div>
+      <div>
+        <label class={labelClass} for="phone">
+          Phone <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="tel" id="phone" name="phone" required autocomplete="tel" />
+      </div>
+      <div class="sm:col-span-2">
+        <label class={labelClass} for="email">
+          Email <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+      <div class="sm:col-span-2">
+        <label class={labelClass} for="mailing-address">
+          Mailing address <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="text" id="mailing-address" name="mailing_address" required autocomplete="street-address" />
+      </div>
+      <div class="sm:col-span-2">
+        <p class={`${labelClass} mb-2`}>Preferred method of contact</p>
+        <div class="flex flex-wrap gap-4 text-base text-[var(--color-ink)]">
+          <label class="inline-flex items-center gap-2">
+            <input type="radio" name="preferred_contact" value="Phone" class="h-4 w-4 text-brand-primary" />
+            Phone
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input type="radio" name="preferred_contact" value="Email" class="h-4 w-4 text-brand-primary" />
+            Email
+          </label>
+          <label class="inline-flex items-center gap-2">
+            <input type="radio" name="preferred_contact" value="Either" class="h-4 w-4 text-brand-primary" />
+            Either
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class={sectionClass}>
+    <legend class="px-1 text-lg font-bold text-brand-primary">Property Information</legend>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="sm:col-span-2">
+        <label class={labelClass} for="property-address">
+          Property address <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="text" id="property-address" name="property_address" required />
+      </div>
+      <div>
+        <label class={labelClass} for="county">
+          County <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="text" id="county" name="county" required />
+      </div>
+      <div class="sm:col-span-2">
+        <p class={`${labelClass} mb-2`}>
+          Property type <span class="text-brand-danger" aria-hidden="true">*</span>
+        </p>
+        <div class="flex flex-wrap gap-4 text-base text-[var(--color-ink)]">
+          {["Single-family", "Duplex", "Apartment", "Other"].map((type) => (
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" name="property_type" value={type} required class="h-4 w-4 text-brand-primary" />
+              {type}
+            </label>
+          ))}
+        </div>
+      </div>
+      <div>
+        <label class={labelClass} for="bedrooms">
+          Number of bedrooms <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="number" id="bedrooms" name="bedrooms" min="0" step="1" required />
+      </div>
+      <div>
+        <label class={labelClass} for="bathrooms">
+          Number of bathrooms <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="number" id="bathrooms" name="bathrooms" min="0" step="0.5" required />
+      </div>
+      <div>
+        <label class={labelClass} for="monthly-rent">
+          Monthly rent <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="number" id="monthly-rent" name="monthly_rent" min="0" step="0.01" required />
+      </div>
+      <div>
+        <label class={labelClass} for="security-deposit">Security deposit</label>
+        <input class={inputClass} type="number" id="security-deposit" name="security_deposit" min="0" step="0.01" />
+      </div>
+      <div>
+        <label class={labelClass} for="occupancy-status">
+          Current occupancy status <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <select class={inputClass} id="occupancy-status" name="occupancy_status" required>
+          <option value="">Select status</option>
+          <option value="Occupied">Occupied</option>
+          <option value="Vacant">Vacant</option>
+          <option value="Pending move-in">Pending move-in</option>
+        </select>
+      </div>
+      <div>
+        <label class={labelClass} for="available-date">Date property became / will become available</label>
+        <input class={inputClass} type="date" id="available-date" name="available_date" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class={sectionClass}>
+    <legend class="px-1 text-lg font-bold text-brand-primary">Tenant / Housing Information</legend>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="sm:col-span-2">
+        <label class={labelClass} for="tenant-name">
+          Name of participating tenant / home seeker <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="text" id="tenant-name" name="tenant_name" required />
+      </div>
+      <div>
+        <label class={labelClass} for="tenancy-start">Date tenancy began</label>
+        <input class={inputClass} type="date" id="tenancy-start" name="tenancy_start" />
+      </div>
+      <div>
+        <label class={labelClass} for="housing-arrangement">Type of housing arrangement</label>
+        <input
+          class={inputClass}
+          type="text"
+          id="housing-arrangement"
+          name="housing_arrangement"
+          placeholder="e.g., shared housing, standard lease"
+        />
+      </div>
+      <div>
+        <label class={labelClass} for="tenant-monthly-rent">Monthly rent</label>
+        <input class={inputClass} type="number" id="tenant-monthly-rent" name="tenant_monthly_rent" min="0" step="0.01" />
+      </div>
+      <div>
+        <label class={labelClass} for="tenant-security-deposit">Security deposit paid</label>
+        <input
+          class={inputClass}
+          type="number"
+          id="tenant-security-deposit"
+          name="tenant_security_deposit"
+          min="0"
+          step="0.01"
+        />
+      </div>
+      <div class="sm:col-span-2">
+        <label class={labelClass} for="tenancy-status">Current status of tenancy</label>
+        <input
+          class={inputClass}
+          type="text"
+          id="tenancy-status"
+          name="tenancy_status"
+          placeholder="e.g., active, ended, pending move-in"
+        />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class={sectionClass}>
+    <legend class="px-1 text-lg font-bold text-brand-primary">Risk Mitigation Request</legend>
+    <div class="mt-4 space-y-4">
+      <div>
+        <p class={`${labelClass} mb-2`}>
+          What are you requesting assistance for? <span class="text-brand-danger" aria-hidden="true">*</span>
+        </p>
+        <div class="flex flex-col gap-2 text-base text-[var(--color-ink)] sm:flex-row sm:flex-wrap sm:gap-4">
+          {["Vacancy loss", "Property damage", "Unpaid rent"].map((choice) => (
+            <label class="inline-flex items-center gap-2">
+              <input type="checkbox" name="request_types" value={choice} class="h-4 w-4 rounded text-brand-primary" />
+              {choice}
+            </label>
+          ))}
+        </div>
+        <p id="request-types-error" class="mt-2 hidden text-sm font-semibold text-brand-danger">
+          Please select at least one type of assistance.
+        </p>
+      </div>
+      <div class="max-w-xs">
+        <label class={labelClass} for="amount-requested">
+          Amount requested <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <input class={inputClass} type="number" id="amount-requested" name="amount_requested" min="0" step="0.01" required />
+      </div>
+      <div>
+        <label class={labelClass} for="circumstances">
+          Please explain the circumstances surrounding your request{" "}
+          <span class="text-brand-danger" aria-hidden="true">*</span>
+        </label>
+        <textarea class={inputClass} id="circumstances" name="circumstances" rows="5" required></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class={sectionClass}>
+    <legend class="px-1 text-lg font-bold text-brand-primary">Document Upload</legend>
+    <div class="mt-4 space-y-4">
+      <div class="rounded-md bg-brand-sky/10 px-4 py-3 text-base text-[var(--color-ink)]">
+        <p class="font-semibold text-brand-primary">Depending on your request type, this may include:</p>
+        <ul class="mt-2 list-disc space-y-1 pl-5">
+          <li>Lease or rental agreement</li>
+          <li>Rent ledger</li>
+          <li>Photos of property damage</li>
+          <li>Invoices/repair estimates</li>
+          <li>Documentation of vacancy</li>
+          <li>Documentation of unpaid rent</li>
+          <li>Security deposit documentation</li>
+          <li>W-9</li>
+          <li>Other supporting documentation</li>
+        </ul>
+      </div>
+      <div>
+        <label class={labelClass} for="supporting-docs">Upload supporting documentation</label>
+        <input
+          class={`${inputClass} file:mr-3 file:rounded-md file:border-0 file:bg-brand-primary file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-white`}
+          type="file"
+          id="supporting-docs"
+          name="supporting_docs"
+          multiple
+          accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,application/pdf,image/jpeg,image/png,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        />
+        <p class="mt-1.5 text-sm text-slate-600">Accepted: PDF, JPG, PNG, DOC, DOCX. Multiple files allowed.</p>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class={sectionClass}>
+    <legend class="px-1 text-lg font-bold text-brand-primary">Certification and Authorization</legend>
+    <div class="mt-4 space-y-4">
+      <p class="rounded-md bg-brand-sky/10 px-4 py-3 text-base leading-relaxed text-[var(--color-ink)]">
+        I certify that the information provided in this application is true and accurate to the best of my knowledge. I
+        understand that submission of this application does not guarantee funding and that SCUCS may request additional
+        documentation or information before making a determination.
+      </p>
+      <label class="flex items-start gap-3 text-base text-[var(--color-ink)]">
+        <input
+          type="checkbox"
+          name="certification"
+          value="I agree to the certification above."
+          required
+          class="mt-1 h-4 w-4 flex-none rounded text-brand-primary"
+        />
+        <span>
+          I agree to the certification above. <span class="text-brand-danger" aria-hidden="true">*</span>
+        </span>
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+    <button
+      type="submit"
+      id="rmf-submit"
+      class="rounded-md bg-brand-primary px-8 py-3 text-lg font-bold text-white shadow-sm hover:bg-brand-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
+      disabled={!formReady}
+    >
+      Submit application
+    </button>
+    <p id="rmf-status" class="text-sm text-slate-600" aria-live="polite"></p>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("rmf-form") as HTMLFormElement | null;
+  const success = document.getElementById("rmf-success");
+  const statusEl = document.getElementById("rmf-status");
+  const submitBtn = document.getElementById("rmf-submit") as HTMLButtonElement | null;
+  const requestTypesError = document.getElementById("request-types-error");
+
+  if (form) {
+    form.addEventListener("submit", async (event) => {
+      const ready = form.dataset.formReady === "true";
+      if (!ready) {
+        event.preventDefault();
+        return;
+      }
+
+      const checked = form.querySelectorAll('input[name="request_types"]:checked');
+      if (checked.length === 0) {
+        event.preventDefault();
+        requestTypesError?.classList.remove("hidden");
+        requestTypesError?.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      requestTypesError?.classList.add("hidden");
+
+      event.preventDefault();
+      if (!submitBtn) return;
+
+      submitBtn.disabled = true;
+      if (statusEl) statusEl.textContent = "Submitting…";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error("Submission failed");
+        }
+
+        form.classList.add("hidden");
+        success?.classList.remove("hidden");
+        success?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch {
+        if (statusEl) {
+          statusEl.textContent =
+            "We could not submit your application. Please try again or email landlordfund@scucs.org.";
+        }
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>

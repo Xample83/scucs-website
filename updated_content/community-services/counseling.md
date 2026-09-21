@@ -22,13 +22,13 @@ Call and ask for **Benefits Counseling**.
 
 ## Housing Counseling
 
-HUD-certified counselors help tenants and future renters in Camden and nearby counties find and keep safe, affordable housing—free of charge.
+SCUCS Housing Counseling helps adults age **60 and older** in **Camden and Gloucester counties** find available, affordable housing.
 
 We can help with:
 
-- Tenant rights and household budgeting
-- Scam and discrimination awareness
-- Finding available units and navigating waitlists
+- Guidance on tenant rights
+- Identifying available housing units
+- Navigating housing waitlists
 
 [Housing Counseling brochure](https://scucs.org/wp-content/uploads/2025/12/Brochure_Housing_Counseling.pdf)
 
